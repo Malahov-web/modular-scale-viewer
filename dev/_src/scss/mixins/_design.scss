@@ -1,0 +1,212 @@
+/*
+DOCSS - Design-orientired CSS
+ 
+Make your code like design with design terms like:
+    Color scheme
+    Typographic scheme
+    Vertical rhytm
+    Horizontal rhytm
+    Height leveling
+*/
+
+@mixin height_leveling($type){
+    $padding_leveling: (1.5em - 1.2em) / 2;
+    // line-height: $l_h_head; 
+
+    @if $type == heading {
+        line-height: $l_h_head;
+        padding-top: $padding_leveling;
+        padding-bottom: $padding_leveling;        
+    } @if $type == heading_double {
+        line-height: $l_h_head;
+        padding-top: $padding_leveling;
+        padding-bottom: $padding_leveling;
+        height: 1 * $l_h_head + 2 * $padding_leveling;
+        overflow: hidden; position: relative;
+        text-overflow:  ellipsis;
+        // &:after{
+        //     content: "..";
+        //     position: absolute; right: 0; bottom : 0; line-height: $l_h_head;
+        // }  
+    } @else if $type == heading_bg {
+        line-height: $l_h_head;
+        padding-top: $padding_leveling;
+        padding-bottom: $padding_leveling;
+    } @else if $type == text {
+        line-height: $l_h;
+    } @else if $type == forms_element {
+        line-height: $l_h;
+        padding-top: 0.333334 * $l_h;
+        padding-bottom: 0.333334 * $l_h;
+    } @else {
+        
+    }
+
+}
+
+
+@mixin v_rhytm($type, $lh) {
+
+    @if $type == heading {
+        // line-height: $l_h_head;
+        // padding-top: $padding_leveling;
+        // padding-bottom: $padding_leveling;  
+
+    } @else if $type == text {
+        margin-top: $lh * 0.5;
+        margin-bottom: $lh * 0.5;
+    } 
+
+      @else if $type == section {
+        padding-bottom: $lh * 2;
+    } @else if $type == section-title {
+        margin-top: 2 * $l_h;
+        margin-bottom: 2 * $l_h;
+  
+    } @else if $type == section-block {
+        margin-top: 2 * $l_h;
+        // margin-bottom: 2 * $l_h;  
+    }
+     @else if $type == block {
+        margin-top: -0.5 * $l_h;
+        margin-bottom: -0.5 * $l_h;         
+    } @else if $type == item {
+        margin-top: $lh * 0.5;
+        margin-bottom: $lh * 0.5;
+    }
+     @else if $type == block-card {
+        margin-top: -$columns_gap+px;
+        margin-bottom: -$columns_gap+px;
+    }     @else if $type == card {
+        margin-top: $columns_gap+px;
+        margin-bottom: $columns_gap+px;
+    } @else {
+        
+    }    
+}
+
+
+@mixin h_rhytm($type, $fs) {
+
+    @if $type == forms_element {
+        padding-left: $columns_gap+px;
+        padding-right: $columns_gap+px;
+        padding-left: $fs * 1.25;
+        padding-right: $fs * 1.25;      
+    } 
+    @else if $type == nav_element {
+
+        padding-left: $fs * 2;
+        padding-right: $fs * 2;         
+    }
+    @else if $type == modal {
+
+        padding-left: $fs * 2;
+        padding-right: $fs * 2;
+        @media (min-width: #{map-get($devices, 'tb_')}px) {
+
+        padding-left: $fs * 4;
+        padding-right: $fs * 4;
+        }
+    }
+    @else if $type == sidebar {
+
+        padding-left: 3 * $columns_gap+px;
+        padding-right: 3 * $columns_gap+px;
+    }
+}
+
+
+@mixin typo_scheme($type) {
+
+    @if $type == headingold {
+        // font-family: $font_family_head;
+        // font-weight: 400;
+        // letter-spacing: $l_s_big;
+    }
+    @else if $type == title {
+        font-weight: 400;
+        letter-spacing: $l_s_big;
+    }    
+
+
+    @else if $type == text {
+        
+    }
+
+    @else if $type == link {  // 3
+        text-transform: lowercase;
+        letter-spacing: $l_s_big;
+        // font-weight: 100; // ? плохо рендерится малый размер
+    }
+    @else if $type == promocode { // 3
+        font-weight: 500;
+        letter-spacing: $l_s;
+    }
+    @else if $type == tools { // tools // +
+        font-weight: 400;
+        letter-spacing: $l_s;  
+        // tools &__item     
+        
+    }
+    // @else if $type == submenu { // submenu ?  heading!
+    @else if $type == heading {
+        
+        font-weight: 500;
+        letter-spacing: $l_s_big;  
+        // submenu > li > a
+        // content h1-h4
+       
+    }
+
+
+
+// &-promocode &-value
+// .product __availability
+        // font-weight: 500;
+        // letter-spacing: $l_s;
+
+// .submenu > li > a
+        // font-weight: 500;
+        // letter-spacing: $l_s_big;
+
+// .footer &__title
+// .contacts &__item &-title
+        // font-weight: 400;
+        // letter-spacing: $l_s_big;
+}
+
+
+@mixin color_scheme ($type) {
+
+    @if $type == default { // 
+        background-color: $white;
+        color: $text; 
+    }
+    @else if $type == 'grey' { // 
+        background-color: $grey_lighter;
+        color: $grey_dark; 
+    }
+    @else if $type == 'grey_light' { // +++
+        background-color: $grey_super_light;
+        color: $grey_dark; 
+    }
+
+    @else if $type == 'accent' { // 
+        background-color: $accent;
+        color: $white; 
+    }
+    @else if $type == 'accent_dark' { // 
+        background-color: $accent_dark;
+        color: $white; 
+    } 
+    @else if $type == 'accent_light' { // 
+        background-color: $accent_light;
+        color: $white; 
+    }
+    @else if $type == 'accent_blue' { // 
+        background-color: $accent_dark;
+        color: $accent_light; 
+    }     
+
+}

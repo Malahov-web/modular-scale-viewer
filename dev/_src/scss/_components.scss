@@ -1,0 +1,925 @@
+/*
+ * Components
+ *
+*/
+
+/*
+ * 1. Buttons
+ * 2. Forms elements
+ * 3. Components 
+*/
+
+
+/*
+ * 1. Buttons
+*/
+
+@mixin hover_gradient_effect($color_first, $color_second) {
+
+    // background: $color_first;
+    background: linear-gradient(to right, $color_first, $color_first );
+
+    &:before{
+        @include pseudoelement_left_top(0, 0);
+        width: 100%; height: 100%;
+        background: linear-gradient(to right, $color_second, $color_first );
+        transition: all 0.3s ease-in-out;
+        margin-left: -100%;
+    }
+    &:hover,
+    &.hover{
+        &:before{
+            margin-left: 0;
+        }
+    }    
+
+}
+
+
+
+.button{
+    display: inline-block;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.button-buy{
+    width: 100%;
+    max-width: 180px;
+    padding: $l_h / 3  1em;
+    // padding: 0.5em  1em;
+    background: $accent; // background: linear-gradient(to right, $accent, $accent );
+    border: 1px solid $accent_dark;
+
+    font-size: $fb;
+    line-height: $l_h;
+    letter-spacing: $l_s_big;
+    color: $white;    
+
+    &:before{
+        @include pseudoelement_left_top(0, 0);
+        width: 100%; height: 100%;
+        background: linear-gradient(to right, $accent_dark, $accent );
+        // transition: all 0.4s ease;
+        transition: all 0.3s ease-in-out;
+        margin-left: -100%;
+    }
+
+    &:hover,
+    &.hover{
+        &:before{
+            margin-left: 0;
+        }
+    }
+
+    // &:hover{
+    //     background: linear-gradient(to right, $accent_dark, $accent );
+    // }
+
+    &:active,
+    &.active{
+
+        &:before{
+            margin-left: 0;
+            background: $accent_dark; // с подмигиванием
+            // background: linear-gradient(to right, $accent_dark, $accent_dark ); // резко
+        }
+    }
+
+    &:disabled,
+    &.disabled{
+
+        border-color: $grey;
+        background: $grey_light;
+        color: $grey;
+
+        &:before{
+            margin-left: -100%;
+            // background: linear-gradient(to right, $grey, $grey );
+        }
+    }    
+
+    span{
+        position: relative;
+    }
+
+}
+
+.button--long {
+    max-width: 240px;
+}
+
+.button-buy--small{
+    padding: 0!important;
+    display: block;
+    font-size: 1 * $fb;
+    line-height: $l_h;
+    width: 1.75 * $l_h;
+    height: 1.75 * $l_h;
+
+    i{
+
+        @include pseudoelement_left_top(50%, 50%);
+        transform: translate(-50%, -50%);
+        font-size: $font_h4; 
+        // font-size: 85%;
+
+        position: absolute;
+        z-index: 1000;
+
+    }
+}
+
+.button-send{
+    width: 100%;
+    max-width: 180px;
+    padding: $l_h / 3  1em;
+    background: $accent_light;
+    border: 1px solid $accent_dark;
+
+    font-size: $fb;
+    line-height: $l_h;
+    letter-spacing: $l_s_big;
+    color: $white; 
+
+    &:before{
+        @include pseudoelement_left_top(0, 0);
+        width: 100%; height: 100%;
+        background: linear-gradient(to right, $accent_dark, $accent_light );
+        // transition: all 0.4s ease;
+        transition: all 0.3s ease-in-out;
+        margin-left: -100%;
+    }
+
+    &:hover,
+    &.hover{
+        &:before{
+            margin-left: 0;
+        }
+    }
+
+    &:active,
+    &.active{
+
+        &:before{
+            margin-left: 0;
+            background: $accent_dark; // с подмигиванием
+            // background: linear-gradient(to right, $accent_dark, $accent_dark ); // резко
+        }
+    }
+
+    &:disabled,
+    &.disabled{
+
+        border-color: $grey;
+        background: $grey_light;
+        color: $grey;
+
+        &:before{
+            margin-left: -100%;
+            // background: linear-gradient(to right, $grey, $grey );
+        }
+    }    
+
+    span{
+        position: relative;
+    }    
+}
+
+.button-callback {
+    text-align: left;
+    overflow: visible;
+
+    padding-left: 1.5 * $l_h;
+    font-size: $fb;
+    @include typo_scheme('tools');
+    @include color_scheme('default');
+
+    i.themify {
+        @include pseudoelement_left_top(0, 50%);
+        transform: translateY(-50%);
+        font-size: 2 * $fb;
+        color: $black;
+    }
+    &:hover {
+        color: $accent_dark;
+        text-decoration: underline;
+        text-decoration-style: dotted;
+        i.themify, a {
+            color: $accent_dark;
+        }
+    }
+
+}
+
+/* 
+.button-filter{
+
+    width: 100%;
+    max-width: 180px;
+    padding: $l_h / 3  1em;
+    // padding: 0.5em  1em;
+    // background: $accent;
+    border: 1px solid $accent_dark;
+
+    font-size: $fb;
+    line-height: $l_h;
+    letter-spacing: $l_s_big;
+    color: $white;
+    // color: transparent;
+
+    background: linear-gradient(to right, $accent, $accent );
+    transition: all 2s ease-in-out;
+
+    &:hover,
+    &.hover{
+
+        background: linear-gradient(to right, $grey, $accent );
+
+    }
+
+    &:active,
+    &.active{
+
+        background: linear-gradient(to right, $grey, $grey );
+
+    }
+
+
+} */
+
+
+/*
+ * 2. Forms elements
+*/
+
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+    -webkit-appearance: none; 
+    margin: 0; 
+}
+input[type=number] {
+    -moz-appearance:textfield; /* Firefox */
+}
+button {
+    border: none;
+}
+
+input,
+textarea{
+    width: 100%;
+    background-color: $white;
+
+    margin: 0;
+    line-height: $l_h;
+    font-family: $font_family;
+    font-weight: 300; 
+}
+input[type="text"]{
+
+}
+input.field-text{
+
+    @include height_leveling('forms_element');
+    @include h_rhytm('forms_element', $font_forms_elements);    
+
+    max-width: 240px;
+
+    font-size: $font_forms_elements;
+    border: 1px solid $grey_light;
+    color: $text;
+
+    &:focus,
+    &.focus{
+        border-color: $accent;
+        border-color: $info_color;
+    }
+ 
+    &.error{
+        border-color: $error_color;
+        border-color: $error_color;
+        background-color: transparentize($error_color, 0.95);
+    }    
+   
+}
+
+textarea.textarea{
+    @include height_leveling('forms_element');
+    @include h_rhytm('forms_element', $font_forms_elements);  
+
+    max-width: 440px;
+    min-height: 4 * $l_h;
+    resize: vertical;
+    max-height: 50vh;
+
+    font-size: $font_forms_elements;
+    border: 1px solid $grey_light;
+    color: $text; 
+
+    &:focus,
+    &.focus{
+        border-color: $accent;
+        border-color: $info_color;
+    }  
+}
+
+label,
+.label{
+    font-size: $font_small;
+    line-height: $l_h;
+
+}
+
+
+%input_radio_checkbox_style{
+
+        position: relative;
+        padding-left: 2em;
+
+        &:before{
+            @include pseudoelement_left_top(0, 50%);
+            transform: translateY(-50%);
+
+            width: 1em;
+            height: 1em;
+            border: 1px solid $accent;
+        }
+
+        &:hover:before,
+        &.hover:before {
+            border: 1px solid $accent_dark;
+        }
+
+        &:checked:before,
+        &.checked:before {
+            border: 1px solid $accent_dark;
+            background: linear-gradient(to right, $accent_dark, $accent);    
+        }  
+}
+
+input[type="checkbox"],
+input.field-checkbox{
+
+    opacity: 0.5;
+    display: none;
+
+
+    &+label{
+
+    display: block;
+    font-size: $fb;
+    // line-height: $l_h;
+    line-height: normal;
+
+
+
+        @extend %input_radio_checkbox_style;
+
+        &:before{
+
+        }
+/* 
+        &:before{
+            @include pseudoelement_left_top(0, 50%);
+            transform: translateY(-50%);
+
+            width: 1em;
+            height: 1em;
+            border: 1px solid $accent;
+        }
+
+        &:hover:before,
+        &.hover:before {
+            border: 1px solid $accent_dark;  
+        }
+
+        &:checked:before,
+        &.checked:before {
+            border: 1px solid $accent_dark;
+            background: linear-gradient(to right, $accent_dark, $accent);    
+        }  
+ */
+
+    }
+    &:checked{
+        &+label{
+            &:before,
+            &:before {
+                border: 1px solid $accent_dark;
+                background: linear-gradient(to right, $accent_dark, $accent);    
+            } 
+        }
+    }    
+}
+
+
+input[type="radio"],
+input.field-radio{
+
+    opacity: 0.5;
+    display: none;
+
+
+    &+label{
+
+    display: block;
+    font-size: $fb;
+    // line-height: $l_h;
+    line-height: normal;
+
+        position: relative;
+        padding-left: 2em;
+
+        @extend %input_radio_checkbox_style;
+
+        &:before{
+            border-radius: 50%;
+        }        
+/* 
+        &:before{
+            @include pseudoelement_left_top(0, 50%);
+            transform: translateY(-50%);
+
+            width: 1em;
+            height: 1em;
+            border: 1px solid $accent;
+
+            border-radius: 50%;
+        }
+
+        &:hover:before,
+        &.hover:before {
+            border: 1px solid $accent_dark;   
+        }
+
+        &:checked:before,
+        &.checked:before {
+            border: 1px solid $accent_dark;
+            background: linear-gradient(to right, $accent_dark, $accent);    
+        }        
+ */
+    }
+
+    &:checked{
+        &+label{
+            &:before,
+            &:before {
+                border: 1px solid $accent_dark;
+                background: linear-gradient(to right, $accent_dark, $accent);    
+            } 
+        }
+    }
+
+}
+
+
+.form--inline {
+    // display: flex;
+    display: inline-flex;
+    justify-content: flex-start;
+    align-items: center;
+    float: left; width: 100%;
+    .form-outer {
+        padding-left: $columns_gap+px;
+        padding-right: $columns_gap+px;
+    }
+}
+
+
+/*
+ * 3. Components
+*/
+
+.select{
+    max-width: 240px;
+    border: 1px solid $accent; 
+    // background-color: transparentize($grey_light, 0.07);
+    background-color: lighten($grey_light, 15%);
+    // background-color: $accent;
+
+    &__title{
+        @include height_leveling('forms_element');
+        @include h_rhytm('forms_element', $font_forms_elements); 
+
+        position: relative;
+        padding-right: 2 * $fb;
+        color: $grey_dark;
+
+        .themify{        
+            @include pseudoelement_right_top(0, 50%);
+            transform: translateY(-50%) rotate(-90deg);
+            font-size: $font_small;
+            color: $grey_dark;
+            margin-right: 1*$fb;
+
+        }   
+    }
+    &__list{
+        // display: none;
+        &-item{
+            @include height_leveling('forms_element');
+            @include h_rhytm('forms_element', $font_forms_elements); 
+
+            // background: linear-gradient(to right, $accent, $accent_light);
+            color: $text;
+
+            &:hover,
+            &.hover{
+                background: linear-gradient(to right, $accent, $accent_light);
+                color: $white;
+            }
+        }
+    }  
+
+    &--closed{
+        border-color: $grey_light;
+    }
+        &--closed &__title{
+            .themify{
+                transform: translateY(-50%) rotate(90deg);
+             }        
+        }   
+
+        &--closed &__list{
+            display: none;
+            &-item.hover{
+                // background: transparent;
+            }   
+        }   
+    
+}
+
+.range{
+
+    width: 100%; max-width: 200px;
+    height: 4px;
+    background-color: $grey_light;
+
+    &__inputs{
+        @include v_rhytm('text', $l_h);
+        // display: inline-block; width: 100%;
+        &-left,
+        &-right{
+            float: left;
+            width: 50%;
+        }
+    }
+            input.field-text{
+                width: 80px;
+                padding-left: 10px; padding-right: 10px;
+            }
+
+    &__scale{
+        @include v_rhytm('text', $l_h);
+        font-size: 2*$fb;
+        position: relative;
+        height: 4px;
+        background-color: $accent;
+    }
+        &__handle{
+            position: relative;
+            font-size: 1 * $fb;
+            // box-shadow: inset 0 0 1px 10px $accent;
+
+            &--min{
+                position: absolute;
+                left: 0; top: 50%;
+                transform: translate(-50%, -50%);
+            }
+            &--max{
+                position: absolute;
+                right: 0; top: 50%;
+                transform: translate(50%, -50%);
+            }
+
+            // .hexagon{
+            //     display: inline-block;
+            //     // @include hexagon_bg(280px, #c4c3c3, 2px, #575656);
+            //     @include hexagon(0.8 * $l_h, $white, 1px, $accent);
+            // }
+        }    
+}
+
+
+.search{
+    padding-right: 60px;
+    position: relative;
+    
+    &__field{
+        max-width: none!important;
+        // padding-right: 60px;
+    } 
+    &__button{
+
+        width: 60px;
+        position: absolute;
+        right : 0; top : 0;
+    }  
+}
+
+.button-search{
+    padding: $l_h / 3  1em;
+    // padding: 0.5em  1em;
+    // background: $accent; // background: linear-gradient(to right, $accent, $accent );
+    border: 1px solid $accent_dark;
+
+    font-size: $fb;
+    line-height: $l_h;
+    letter-spacing: $l_s_big;
+    color: $white;  
+
+    //
+    @include hover_gradient_effect($accent, $accent_dark);
+
+    .themify{
+        position: relative;
+        font-size: $font_h4;
+        // z-index: 300;
+        z-index: zindex_icon;
+    }
+}
+
+%hamburger{
+    // padding: 20px;
+    // background-color: $accent;
+
+
+    @include pseudoelement_left_top(50%, 50%);
+    transform: translate(-50%, -50%);
+
+}
+
+.button-menu{
+    @include height_leveling('forms_element');
+    @include h_rhytm('forms_element', $font_forms_elements);    
+
+    // max-width: 240px;
+    position: relative;
+    box-sizing: border-box;
+    width: 50px; height: 50px;
+
+    font-size: $font_h4;
+    background-color: $accent;
+    border: 1px solid $grey_light;
+    color: transparent; 
+
+
+    
+    .hamburger{
+        @extend %hamburger; 
+    }
+}
+
+$button_close_width: 2*$l_h;
+.button-close {
+    width: $button_close_width;
+    height: $button_close_width;
+    background-color: $accent;
+    cursor: pointer;
+
+    i {
+        @include pseudoelement_left_top(50%, 50%);
+        transform: translate(-50%, -50%);
+        font-size: 125%;
+        color: $white;
+    }
+
+    &:hover {
+        background-color: $accent_dark;
+    }
+}
+
+/* 19. rating
+ * **********************************************************************
+ *  
+*/
+
+// .rating {
+//     ul {
+//         // text-align: left;
+//         text-align: inherit;
+
+//         li {
+//             display: inline-block;
+
+//             span {
+//                 position: relative;
+//                 // font-size: $fb;
+//                 font-size: inherit;
+//                 @extend .themify;
+
+//                 &:before {
+//                     display: inline-block;
+                   
+//                     @extend .themify-star;
+//                     // @extend .themify-angle-right;
+//                 }
+//             }
+           
+
+//         }
+
+//         li.on {
+//             span {
+//                 &:before {
+//                     color: $warning_color;
+//                 }  
+//             }
+//         }
+//         li.off {
+//             span {
+//                 &:before {
+//                     color: $grey_lighter;
+//                 } 
+//             }
+//         }  
+//     }
+
+// }
+
+.tabs {
+    // background-color: $accent; // height: 48px;
+    margin-bottom: $l_h; 
+    // border: 1px solid $grey_super_light;
+
+    &__controls {
+        // display: inline-block;
+        float: left;
+        width: 100%;        
+
+        &-button {
+            // float: left;
+            // background-color: $grey_lighter;
+            @include color_scheme('grey');
+            margin-right: 1px;
+
+            @media (min-width: #{map-get($devices, 'tb_')}px) {
+                float: left;
+            }
+
+            a {
+                @extend %nav_primary_item;
+                color: inherit;
+
+                &:hover {
+                    @include color_scheme('accent_light');
+                }
+            }
+        }
+        &-button.active {
+            a {
+                @include color_scheme('accent');
+            }
+
+        }
+    }
+    &__content {
+        float: left;
+        width: 100%;        
+        border: 1px solid $grey_super_light;
+
+        &-item {
+            @include h_rhytm('nav_element', $fb);
+            padding-top: 1 * $l_h;
+            padding-bottom: 1 * $l_h;
+            overflow: hidden;
+
+        }
+
+    }
+}
+.js-tabs__controls-button{
+    
+}
+.js-tabs__content-item{
+    display: none;
+    
+}
+.js-tabs__content-item.active{
+    display: block;
+    
+}
+
+/* modals */
+
+.overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: transparentize($text, 1-0.95);
+    z-index: $zindex_modal;
+
+
+
+    &-inner {
+        @include pseudoelement_left_top(0, 0);
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;   
+    }
+
+    .modal {
+
+    }
+}
+
+.modal {
+    @extend %shadow;
+    margin: 0 auto;
+    width: 90%;
+    background-color: $white;
+    position: relative;
+
+    position: absolute;
+    z-index: $zindex_modal;
+
+    @media (min-width: #{map-get($devices, 'ds_')}px) {
+        width: 100%;
+        max-width: 600px;
+    }
+    &__close {
+        font-size: $font_h4;
+        @include pseudoelement_right_top(0, 0);
+        height: 100%;
+                  
+    }
+
+    &-header {
+        position: relative;
+        padding: 0.5*$l_h  $button_close_width;
+        border-bottom: 1px solid $grey_lighter;
+        border-bottom: 1px solid $grey_light;
+    }
+    &__title {
+
+    }
+
+    &-content {
+        @include h_rhytm('modal', $fb);
+    }
+    &__subtitle {
+        font-size: $font_h4;
+        @include height_leveling('text');
+        @include v_rhytm('text', $l_h);
+    }    
+    &__form {
+        .field-outer {
+            @include v_rhytm('text', $l_h);    
+        }
+        input.field-text {
+            max-width: none;
+        }
+        textarea {
+            max-width: 100%;
+        }
+        .button-send {
+            @include v_rhytm('item', $l_h);  
+        }
+    }
+
+    &-footer {
+        padding: 0.5*$l_h 0;
+    }
+
+
+
+    &--subscribe  {
+        // background: url('../images/the-terminator-sarah-connor-robot-graphic.jpg') bottom left no-repeat;
+        // background: url('../images/the-terminator-sarah-connor-robot-graphic.png') bottom left no-repeat;
+        // background: $white url('../images/the-terminator-sarah-connor-robot-graphic--clean.png') bottom left no-repeat;
+        background: $white url('../images/the-terminator-sarah-connor-robot-graphic--clean--reverse-x--muted.png') bottom 0 left -85px no-repeat;
+        background-size: 50% auto;
+
+        &:hover {
+            background-image: url('../images/the-terminator-sarah-connor-robot-graphic--clean--reverse-x.png');
+        }
+    } 
+    &--subscribe &__slogan {
+        padding: 1*$l_h  0;
+        font-size: $font_h3;
+        font-weight: bold;
+        color: $grey_super_dark;
+        color: darken($grey, 28%); // #;;
+    } 
+    &--subscribe &__subtitle {
+        padding-top: 1*$l_h;
+
+    } 
+ 
+
+
+}
+
+.modal--subscribe {
+
+}
+
+.js-modal {
+    display: none;
+}

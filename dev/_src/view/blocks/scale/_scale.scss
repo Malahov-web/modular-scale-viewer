@@ -1,0 +1,165 @@
+/*
+ * Blocks vars
+ * Block and elements styles
+ * Other styles (Not block elems, but associated with it)
+ * Media rules - Mobile First, use min-width
+ * Default states
+ */
+
+// Block vars
+// $blocknameItemPaddings: 20px;
+// $blocknameDecorBg: $globalColor;
+
+.section-settings {
+    padding-top: 2*$l_h;
+    padding-bottom: 1*$l_h;
+    background-color: $grey_super_light;
+}
+
+.section-viewer {
+    margin-top: 2*$l_h;
+}
+
+// Block and elements
+.scale {
+    // padding: 10px;
+
+    padding: 1*$l_h 0;
+
+    &:hover {
+
+    }
+    // Block Elements    
+    &__item {
+        display: flex;
+        // justify-content: space-between;
+        justify-content: flex-start;
+        align-items: center;
+        padding: $l_h 0;
+        border: 1px solid $grey_super_light;
+        border-width: 1px 0;
+
+        &-name-outer {
+            padding-right: 20px;
+        }
+        &-name {
+            // Default rules
+            width: 80px;
+        }
+        &-value-outer {
+            padding-right: 40px;
+        }        
+        &-value {
+            width: 40px;
+        } 
+        &-line-height-outer {
+            padding-right: 20px;
+        }
+        &-line-height {
+            height: $l_h;
+        }
+        &-text {
+            line-height: $l_h;
+        }    
+
+        // &-image {
+        //     img {  }
+        // }
+
+    }
+
+    // Blocks Modificators
+    &--success &__item {
+        &-title {
+            // Ovverride rules
+        }
+    }
+
+    // Inheritance (for components)
+    .otherblock {
+        // Ovverride rules
+    }
+}
+
+// Not block elems, but associated with it
+.blockname-helperelement {  
+    
+}
+
+// Media rules - Mobile First, use min-width
+// @media ( min-width: $screen-sm-min ) {
+
+//     .blockname {
+//         // etc..
+//     }  
+// }
+
+// Default states
+.blockname {
+    display: none;
+}
+
+
+
+
+.settings {
+
+    // padding: 1*$l_h 0;
+    padding-top: 1*$l_h;
+    padding-bottom: 1*$l_h;
+
+    // Block Elements    
+    &__item {
+        margin-bottom: 1*$l_h;
+
+        &-field {
+            .field-text {
+                width: 60px;
+                padding-left: 1/2*$l_h;
+                padding-right: 1/2*$l_h;
+            }
+        }
+        &-field--w--double {
+            .field-text {
+                width: 120px;
+            }
+        }
+        &-label {
+            display: block;
+            font-size: $font_h4;
+        }
+
+
+
+    }
+
+}
+
+
+.select{
+    // max-width: 240px;
+    // border: 1px solid $accent; 
+    // // background-color: transparentize($grey_light, 0.07);
+    // background-color: lighten($grey_light, 15%);
+    // // background-color: $accent;
+
+    // &__title{
+    //     @include height_leveling('forms_element');
+    //     @include h_rhytm('forms_element', $font_forms_elements); 
+
+    //     position: relative;
+    //     padding-right: 2 * $fb;
+    //     color: $grey_dark;
+    // }
+}
+select.select {
+        @include height_leveling('forms_element');
+        @include h_rhytm('forms_element', $font_forms_elements); 
+
+        position: relative;
+        padding-right: 2 * $fb;
+        color: $grey_dark;  
+        
+        font-size: $fb;  
+        line-height: $l_h;
+}

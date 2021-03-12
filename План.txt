@@ -1,0 +1,45 @@
+
+ср
+  deploy: Boilerplate-202-Gulp, add base and components from Skynet Computers (1)
+  Design - viewer (1) 
+  
+  Design - settings (1)
+  Верстка - scale, settings (1)
+  app.js (1)
+
+..далее:
+(!) ПЕРЕД Запуском Gulp - 
+Вынести app.js в :dev,
+Скопировать код и index.html:dev в index.html:src
+
+чт
+  refact file structure;  app.js - data:update,  (1)
+  app.js - computed, methods
+
+.. попробовать сделать объект fonts в computed:
+
+
+пт
+computed
+
+
+
+
+1. Перенести base
+  1.1 Скопировать по частя (логическим блокам) код файла
+  1.2 Проверить соответствие переменных 
+  1.3 Перенести переменные vars вниз файла _vars
+
+
+Проектирование приложения:
+
+Модель д-ч
+
+ratio
+font_base
+font_size_names  []
+
+font_family
+color
+font_weight
+

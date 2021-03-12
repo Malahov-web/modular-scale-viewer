@@ -132,7 +132,8 @@
                                             <label class="settings__item-label">Input normal Label</label>
 
 
-                                            <input type="text" class="field-text" v-bind:value="font_base">
+                                            <!-- <input type="text" class="field-text" v-model="font_base" v-on:change="setModualarScale"> -->
+                                            <input type="text" class="field-text" v-model="font_base" v-on:change="setModualarScale">
 
                                         </div>
                                     </div>
@@ -221,7 +222,7 @@
     
                         <div class="mv_12">
     
-                            <div class="scale">
+                            <div class="scale"></div>
     
                                 <div class="scale__item" v-for="font in fonts">
     
@@ -231,7 +232,7 @@
                                         </div>
                                     </div>
                                     <div class="scale__item-value-outer">
-                                        <div class="scale__item-value">{{ font.font_size }}</div>
+                                        <div class="scale__item-value">{{ Math.round(font.font_size ) }}px</div>
                                     </div>
                                     <div class="scale__item-line-height-outer">
                                         <div class="scale__item-line-height"></div>

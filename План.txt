@@ -14,14 +14,23 @@
 
 чт
   refact file structure;  app.js - data:update,  (1)
-  app.js - computed, methods
+  app.js - computed, methods (1)
 
 .. попробовать сделать объект fonts в computed:
 
 
-пт
-computed
+пт 12.03
+  app.js -  computed  (1)
+  app.js - methods: setModualarScale(), setDefaultModualarScale() (1)
+  app.js - move to computed: setDefaultModualarScale(),  (1)
 
+
+ср
+..
+
+
+далее:
+.. создать дир lessons - делать уроки из https://www..com/courses/intro-to-vue-js/vue-instance/
 
 
 

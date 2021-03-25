@@ -1,0 +1,21 @@
+
+
+Исходные д-е:
+
+ratio
+font_base
+font_size_names
+
+
+Сгенерировать 
+fonts  - массив
+метод setDefaultModualarScale() - запускатеся на created
+метод setModualarScale() - запускается на on:change
+
+
++- 1. Запускать setModualarScale() на v-on:change для полей
+Срабатывает после следующего change
+
++- 2. Перенести setModualarScale() в computed ?
+срабаывает сразу, 
+но отрисовывается позднее

@@ -169,6 +169,37 @@ const app = new Vue({
         fonts: [],
     },
 
+    // computed: {
+
+    //     // setModualarScale()  // -
+    //     setModualarScale: function () {
+    //         // this.message = this.message.split('').reverse().join('')
+    //         // alert();
+
+    //         // Вычислить шкалу шрифтов
+
+    //         // 0-й элемент 'base'
+    //         // this.fonts.push( {} );
+    //         this.fonts[0]['name'] = this.font_size_names[0];
+    //         this.fonts[0]['font_size'] = this.font_base;
+
+    //         // все последующие
+    //         for (let i = 1; i < this.font_size_names.length; i++) {
+
+    //             // Добавить name
+    //             // this.fonts.push( {} );
+    //             this.fonts[i]['name'] = this.font_size_names[i];
+
+    //             // Добавить font_size 
+    //             this.fonts[i]['font_size'] = this.ratio * this.fonts[i-1]['font_size'];
+    //             this.fonts[i]['font_size'] = this.fonts[i]['font_size'].toFixed(4);
+
+    //             // debugger;
+    //         }            
+            
+    //     }        
+    // },
+
     created () {
 
 
@@ -233,7 +264,7 @@ const app = new Vue({
 
         setModualarScale: function () {
             // this.message = this.message.split('').reverse().join('')
-// alert();
+            // alert(); // +
 
             // Вычислить шкалу шрифтов
 
@@ -254,9 +285,11 @@ const app = new Vue({
                 this.fonts[i]['font_size'] = this.fonts[i]['font_size'].toFixed(4);
 
                 // debugger;
+                console.log('setModualarScale() on the run, i = ' + i);
             }            
             
         }
+
     }    
 
 });

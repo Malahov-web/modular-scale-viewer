@@ -132,7 +132,7 @@
                                             <label class="settings__item-label">Input normal Label</label>
 
 
-                                            <input type="text" class="field-text" v-model="font_base" v-on:change="setModualarScale">
+                                            <input type="text" class="field-text" v-model="font_base" _v-on:change="setModualarScale">
                                             <!-- <input type="text" class="field-text" v-model="font_base" v-on:change="setModualarScale"> -->
                                             <input type="text" v-bind:value="font_base" >
                                         </div>
@@ -222,9 +222,13 @@
     
                         <div class="mv_12">
     
-                            <div class="scale"></div>
+                            <div class="scale" v-html="scaleItemTemplate"> 
+
+                                <!-- </div> -->
+
+                                {#{ scaleItemTemplate }#}
     
-                                <div class="scale__item" v-for="font in fonts">
+                                <!--div class="scale__item" v-for="font in fonts" v-bind:key="font.id">
     
                                     <div class="scale__item-name-outer">
                                         <div class="scale__item-name">
@@ -241,7 +245,7 @@
                                         <div class="text">Lorem Ipsum - это текст-"рыба", часто используемый в печати и вэб-дизайне. Lorem Ipsum является стандартной ...</div>
                                     </div>
     
-                                </div>
+                                </div-->
     
                             </div>
     

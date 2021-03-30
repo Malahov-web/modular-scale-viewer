@@ -122,86 +122,22 @@
 
                     <div class="row">
 
-                        <div class="mv_12 settings ">
 
-                            <div class="  row">
+                        <!-- <settingsComp class=""
 
-                                <div class="settings__item-outer mv_12 ds_2">
-                                    <div class="settings__item">
-                                        <div class="settings__item-field">
-                                            <label class="settings__item-label">Input normal Label</label>
+                            on-change:change-font-size="updateScale"
+                        
+                        ></settingsComp> -->
 
 
-                                            <input type="text" class="field-text" v-model="font_base" _v-on:change="setModualarScale">
-                                            <!-- <input type="text" class="field-text" v-model="font_base" v-on:change="setModualarScale"> -->
-                                            <input type="text" v-bind:value="font_base" >
-                                        </div>
-                                    </div>
+                        <settings-comp 
+                            class="asd"
+                            :font_base="font_base"
+                            :ratio="ratio"
+                            >
 
-                                </div>
+                        </settings-comp>
 
-                                <div class="settings__item-outer mv_12 ds_2">
-                                    <div class="settings__item">
-                                        <div class="settings__item-field">
-                                            <label class="settings__item-label">Ratio</label>
-                                            <!-- <input type="text" class="field-text" __v-bind:value="ratio" > -->
-                                            <input type="text" class="field-text"  v-model="ratio">
-                                        </div>
-                                    </div>
-
-                                </div>
-
-                            </div>
-
-                            <div class="_settings row">
-
-                                <div class="settings__item-outer mv_12 ds_2">
-                                    <div class="settings__item">
-                                        <div class="settings__item-field">
-                                            <label class="settings__item-label">Font-family</label>
-                                            <select name="" class="select">
-                                                <option value="Roboto" _disabled="">Roboto</option>
-                                                <option value="Open Sans">Open Sans</option>
-                                                <option value="Noto Sans JP">Noto Sans JP</option>
-                                                <option value="Lato">Lato</option>
-                                                <option value="Montserrat">Montserrat</option>
-                                            </select>
-                                        </div>
-                                    </div>
-
-                                </div>
-
-                                <div class="settings__item-outer mv_12 ds_2">
-                                    <div class="settings__item">
-                                        <div class="settings__item-field settings__item-field--w--double">
-                                            <label class="settings__item-label">Color</label>
-                                            <input type="text" class="field-text" value="#323231">
-                                        </div>
-                                    </div>
-
-                                </div>
-
-                                <div class="settings__item-outer mv_12 ds_2">
-                                    <div class="settings__item-field">
-                                        <label class="settings__item-label">Font-weight</label>
-                                        <select name="" class="select">
-                                            <option value="Roboto" _disabled="">400</option>
-                                            <option value="Open Sans">300</option>
-                                            <option value="Noto Sans JP">500</option>
-                                            <option value="Lato">600</option>
-                                            <option value="Montserrat">700</option>
-                                        </select>
-                                    </div>
-
-                                </div>
-
-
-
-                            </div>
-
-
-
-                        </div>
 
                     </div>
 
@@ -222,11 +158,14 @@
     
                         <div class="mv_12">
     
-                            <div class="scale" v-html="scaleItemTemplate"> 
+                            <div class="scale" _v-html="scaleItemTemplate"> 
 
-                                <!-- </div> -->
+                                <p>FBase: {{ font_base }} </p>
 
-                                {#{ scaleItemTemplate }#}
+                                {#{ scale }#}
+
+                                <scale :fontslocal="fonts"></scale>
+
     
                                 <!--div class="scale__item" v-for="font in fonts" v-bind:key="font.id">
     

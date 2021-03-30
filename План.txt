@@ -25,7 +25,14 @@
   app.js - move to computed: setDefaultModualarScale(),  (1)
 
 
-ср
+ср 24.03
+..
+  app.js - Разработка П.п1-4 (1)
+  app.js - add components: scale (1)
+
+  app.js - components: settings (0.5)
+
+вт
 ..
 
 

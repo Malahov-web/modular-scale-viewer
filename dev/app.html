@@ -159,12 +159,20 @@
                         <div class="mv_12">
     
                             <div class="scale" _v-html="scaleItemTemplate"> 
+                            <!-- <div class="scale" v-html="scaleItemTemplate">  -->
 
-                                <p>FBase: {{ font_base }} </p>
+                                <p>Font Base in Instance: {{ font_base }}
+                                                                    </p>
 
                                 {#{ scale }#}
 
-                                <scale :fontslocal="fonts"></scale>
+                                <scale 
+                                    :fontslocal="fonts"
+                                    __v-on:update-font-size="_updateScale" 
+                                    v-on:update-scale="updateInstanceSettings"
+                                    >
+
+                                </scale>
 
     
                                 <!--div class="scale__item" v-for="font in fonts" v-bind:key="font.id">

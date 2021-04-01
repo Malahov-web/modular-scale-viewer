@@ -33,7 +33,20 @@
   app.js - components: settings (0.5)
 
 вт
-..
+    skynet-computers-app  - app.js - components: settings  (1)
+  skynet-computers-app  - app.js - components: settings  (1)
+  skynet-computers-app  - app.js - components: settings  (0.5)
+
+..Куда-нибудь записать:
+Не изменяйте у компонента 'prop ' напрямую, 
+лучше дублировать в д-х!
+
+..далее:
+  посмотреть в уроке 9 что куда передается,
+  можно ли передать д-е из компонета экземпляру, 
+  или же нужно обязательно передавать через родительский компонент
+
+
 
 
 далее:

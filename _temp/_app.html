@@ -25,6 +25,7 @@
     <!-- <link rel="stylesheet" type="text/css" href="css/normalize.css"> -->
     <!-- <link rel="stylesheet" type="text/css" href="css/mw_kit.css"> -->
     <link rel="stylesheet" type="text/css" href="css/style.css">
+    <!-- <link rel="stylesheet" type="text/css" href="css/responsive.css"> -->
 
 
 </head>
@@ -121,81 +122,22 @@
 
                     <div class="row">
 
-                        <div class="mv_12 settings ">
 
-                            <div class="  row">
+                        <!-- <settingsComp class=""
 
-                                <div class="settings__item-outer mv_12 ds_2">
-                                    <div class="settings__item">
-                                        <div class="settings__item-field">
-                                            <label class="settings__item-label">Input normal Label</label>
-                                            <input type="text" class="field-text" value="">
-                                        </div>
-                                    </div>
-
-                                </div>
-
-                                <div class="settings__item-outer mv_12 ds_2">
-                                    <div class="settings__item">
-                                        <div class="settings__item-field">
-                                            <label class="settings__item-label">Ratio</label>
-                                            <input type="text" class="field-text" value="1.14">
-                                        </div>
-                                    </div>
-
-                                </div>
-
-                            </div>
-
-                            <div class="_settings row">
-
-                                <div class="settings__item-outer mv_12 ds_2">
-                                    <div class="settings__item">
-                                        <div class="settings__item-field">
-                                            <label class="settings__item-label">Font-family</label>
-                                            <select name="" class="select">
-                                                <option value="Roboto" _disabled="">Roboto</option>
-                                                <option value="Open Sans">Open Sans</option>
-                                                <option value="Noto Sans JP">Noto Sans JP</option>
-                                                <option value="Lato">Lato</option>
-                                                <option value="Montserrat">Montserrat</option>
-                                            </select>
-                                        </div>
-                                    </div>
-
-                                </div>
-
-                                <div class="settings__item-outer mv_12 ds_2">
-                                    <div class="settings__item">
-                                        <div class="settings__item-field settings__item-field--w--double">
-                                            <label class="settings__item-label">Color</label>
-                                            <input type="text" class="field-text" value="#323231">
-                                        </div>
-                                    </div>
-
-                                </div>
-
-                                <div class="settings__item-outer mv_12 ds_2">
-                                    <div class="settings__item-field">
-                                        <label class="settings__item-label">Font-weight</label>
-                                        <select name="" class="select">
-                                            <option value="Roboto" _disabled="">400</option>
-                                            <option value="Open Sans">300</option>
-                                            <option value="Noto Sans JP">500</option>
-                                            <option value="Lato">600</option>
-                                            <option value="Montserrat">700</option>
-                                        </select>
-                                    </div>
-
-                                </div>
+                            on-change:change-font-size="updateScale"
+                        
+                        ></settingsComp> -->
 
 
+                        <settings-comp 
+                            class="asd"
+                            :font_base="font_base"
+                            :ratio="ratio"
+                            >
 
-                            </div>
+                        </settings-comp>
 
-
-
-                        </div>
 
                     </div>
 
@@ -205,26 +147,43 @@
 
             <section class="section section-viewer">
                 <div class="container">
-
+    
                     <div class="row">
                         <div class="mv_12">
                             <h2>Viewer</h2>
                         </div>
                     </div>
-
+    
                     <div class="row">
-
+    
                         <div class="mv_12">
+    
+                            <div class="scale" _v-html="scaleItemTemplate"> 
+                            <!-- <div class="scale" v-html="scaleItemTemplate">  -->
 
-                            <div class="scale">
-                                <div class="scale__item">
+                                <p>Font Base in Instance: {{ font_base }}
+                                                                    </p>
+
+                                {#{ scale }#}
+
+                                <scale 
+                                    :fontslocal="fonts"
+                                    __v-on:update-font-size="_updateScale" 
+                                    v-on:update-scale="updateInstanceSettings"
+                                    >
+
+                                </scale>
+
+    
+                                <!--div class="scale__item" v-for="font in fonts" v-bind:key="font.id">
+    
                                     <div class="scale__item-name-outer">
                                         <div class="scale__item-name">
-                                            <input class="field-text" type="text" value='h1'>
+                                            <input class="field-text" type="text" __v-bind:value="font.name" v-model="font.name">
                                         </div>
                                     </div>
                                     <div class="scale__item-value-outer">
-                                        <div class="scale__item-value">16px</div>
+                                        <div class="scale__item-value">{{ Math.round(font.font_size ) }}px</div>
                                     </div>
                                     <div class="scale__item-line-height-outer">
                                         <div class="scale__item-line-height"></div>
@@ -232,24 +191,22 @@
                                     <div class="scale__item-text-outer">
                                         <div class="text">Lorem Ipsum - это текст-"рыба", часто используемый в печати и вэб-дизайне. Lorem Ipsum является стандартной ...</div>
                                     </div>
-
-                                </div>
+    
+                                </div-->
+    
                             </div>
-
-
+    
+    
                         </div>
-
+    
                     </div>
-
+    
                 </div>
             </section>
 
 
         </section>
 
-
-
-        
         <!-- development version, includes helpful console warnings -->
         <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
 

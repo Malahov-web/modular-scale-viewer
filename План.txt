@@ -46,8 +46,11 @@
   можно ли передать д-е из компонета экземпляру, 
   или же нужно обязательно передавать через родительский компонент
 
-
-
+ср
+  lessons\vuemastery.com\1 intro-to-vue-js\9-communicating-events  - :video;  app.js - refact (1)
+  ../projects/sandbox - 
+    app.js - Архитектура приложения, (1)
+  app.js - Refact:  clean, add components: settings, scale. ()
 
 далее:
 .. создать дир lessons - делать уроки из https://www..com/courses/intro-to-vue-js/vue-instance/

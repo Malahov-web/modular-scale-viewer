@@ -57,10 +57,22 @@
         }
         &-line-height {
             height: $l_h;
+            width: 8px;
+            background-color: transparentize($accent, 1-0.25);
         }
+        &-text-outer {
+            max-width: calc( 100% - (80px + 20px) - (40px + 40px) - (20px + 8px);
+
+        }         
         &-text {
             line-height: $l_h;
-        }    
+        } 
+        .text {
+
+            line-height: $l_h;
+            height: $l_h;
+            @include text_overflow();
+        }              
 
         // &-image {
         //     img {  }

@@ -50,7 +50,12 @@
   lessons\vuemastery.com\1 intro-to-vue-js\9-communicating-events  - :video;  app.js - refact (1)
   ../projects/sandbox - 
     app.js - Архитектура приложения, (1)
-  app.js - Refact:  clean, add components: settings, scale. ()
+  app.js - Refact:  clean, add components: settings, scale. (0.5)
+
+  app.js - update components: scale - add template, methods (1)
+
+
+
 
 далее:
 .. создать дир lessons - делать уроки из https://www..com/courses/intro-to-vue-js/vue-instance/

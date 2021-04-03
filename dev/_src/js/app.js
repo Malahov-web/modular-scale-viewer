@@ -9,13 +9,20 @@ Vue.component( 'settings', {
         ratio: {
             type: Number,
             require: true,
-        }
+        },
+        styles: {
+            type: Object,
+            require: true,
+        },
+        
     },
 
     data() {
         return {
             fb_local_settings: this.fb,
             ratio_local_settings: this.ratio,
+            styles_local_settings: this.styles
+
         }
     },
 
@@ -28,7 +35,9 @@ Vue.component( 'settings', {
                     <div class="settings__item">
                         <div class="settings__item-field">
                             <label class="settings__item-label">Input normal Label</label>
-                            <input type="text" class="field-text" v-model.number="fb_local_settings" v-on:keyup="changeFB">
+                            <input type="text" class="field-text" 
+                                v-model.number="fb_local_settings" 
+                                v-on:keyup="changeFB">
                             <p>Prop fb =  {{ fb }} </p>
                             <p>Var fb_local_settings = {{ fb_local_settings }} </p>
                         </div>
@@ -40,7 +49,9 @@ Vue.component( 'settings', {
                     <div class="settings__item">
                         <div class="settings__item-field">
                             <label class="settings__item-label">Ratio</label>
-                            <input type="text" class="field-text"  v-model.number="ratio_local_settings" v-on:keyup="changeRatio">
+                            <input type="text" class="field-text"  
+                                v-model.number="ratio_local_settings" 
+                                v-on:keyup="changeRatio">
                         </div>
                     </div>
 
@@ -54,7 +65,7 @@ Vue.component( 'settings', {
                     <div class="settings__item">
                         <div class="settings__item-field">
                             <label class="settings__item-label">Font-family</label>
-                            <select name="" class="select">
+                            <select name="" class="select" v-model="styles.fontFamily">>
                                 <option value="Roboto" _disabled="">Roboto</option>
                                 <option value="Open Sans">Open Sans</option>
                                 <option value="Noto Sans JP">Noto Sans JP</option>
@@ -70,7 +81,9 @@ Vue.component( 'settings', {
                     <div class="settings__item">
                         <div class="settings__item-field settings__item-field--w--double">
                             <label class="settings__item-label">Color</label>
-                            <input type="text" class="field-text" value="#323231">
+                            <input type="text" class="field-text" 
+                                v-model="styles.color"
+                                v-on:keyup="changeStyles">
                         </div>
                     </div>
 
@@ -79,12 +92,12 @@ Vue.component( 'settings', {
                 <div class="settings__item-outer mv_12 ds_2">
                     <div class="settings__item-field">
                         <label class="settings__item-label">Font-weight</label>
-                        <select name="" class="select">
-                            <option value="Roboto" _disabled="">400</option>
-                            <option value="Open Sans">300</option>
-                            <option value="Noto Sans JP">500</option>
-                            <option value="Lato">600</option>
-                            <option value="Montserrat">700</option>
+                        <select name="" class="select" v-model="styles.fontWeight">
+                            <option value="400" _disabled="">400</option>
+                            <option value="300">300</option>
+                            <option value="500">500</option>
+                            <option value="600">600</option>
+                            <option value="700">700</option>
                         </select>
                     </div>
 
@@ -103,13 +116,18 @@ Vue.component( 'settings', {
 
         changeFB() {
             
-            this.$emit('change-settings', this.fb_local_settings, this.ratio_local_settings);
+            this.$emit('change-settings', this.fb_local_settings, this.ratio_local_settings, this.styles_local_settings);
         },
 
         changeRatio() {
             
-            this.$emit('change-settings', this.fb_local_settings, this.ratio_local_settings);
-        }        
+            this.$emit('change-settings', this.fb_local_settings, this.ratio_local_settings, this.styles_local_settings);
+        },
+        
+        changeStyles() {
+            
+            this.$emit('change-settings', this.fb_local_settings, this.ratio_local_settings, this.styles_local_settings);
+        },         
 
     }
 
@@ -129,6 +147,10 @@ Vue.component( 'scale', {
             type: Number,
             require: true,
         },
+        styles: {
+            type: Object,
+            require: true,
+        },        
         font_size_names: {
             type: Array,
             require: true,
@@ -139,7 +161,6 @@ Vue.component( 'scale', {
     data() {
         return {
             // fonts: [],
-            color: '#3377aa',
         }
     },
 
@@ -164,9 +185,11 @@ Vue.component( 'scale', {
                         v-bind:style="{ fontSize: font['font_size'] + 'px' }"
                     ></div>
                 </div>
-                <div class="scale__item-text-outer">
+                <div class="scale__item-text-outer"
+                    v-bind:style="{ fontSize: font['font_size'] + 'px' }" 
+                >
                     <div class="text" _v-bind:style="{ fontSize: font['font_size'] }" 
-                        v-bind:style="{ fontSize: font['font_size'] + 'px' }"
+                        v-bind:style="styles" 
                     >
                         Lorem Ipsum - это текст-"рыба", часто используемый в печати и вэб-дизайне. Lorem Ipsum является стандартной ...
                     </div>
@@ -237,21 +260,32 @@ let app = new Vue ( {
             'h3',
             'h2',
             'h1',
-        ]
+        ],
+
+        styles: {
+            color: '#353437',
+            fontWeight: 400,
+            fontFamily: 'Roboto',
+        }
     },
 
     methods: {
 
-        updateSettings(fb_new, ration_new) {
+        updateSettings(fb_new, ration_new, styles_new) {
             this.fb = fb_new;
             this.ratio = ration_new;
+            this.styles = styles_new;
         }
     }
 
 
 
 } )
-
+/* <option value="Roboto" _disabled="">Roboto</option>
+<option value="Open Sans">Open Sans</option>
+<option value="Noto Sans JP">Noto Sans JP</option>
+<option value="Lato">Lato</option>
+<option value="Montserrat">Montserrat</option> */
 
 
 

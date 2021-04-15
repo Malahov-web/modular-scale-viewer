@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>Boilerplate-2020-Gulp-Nunjucks-SCSS</title>
+    <title>Modular Scale Viewer</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, user-scalable=yes, initial-scale=1.0">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -10,22 +10,16 @@
     <meta content='width' name='MobileOptimized'>
 
 
-    <meta name="theme-color" content="#EF6C00">
+    <meta name="theme-color" content="#2491dd">
     <!-- Chrome, Firefox OS and Opera -->
-    <meta name="theme-color" content="#EF6C00">
+    <meta name="theme-color" content="#2491dd">
     <!-- Windows Phone -->
-    <meta name="msapplication-navbutton-color" content="#EF6C00">
+    <meta name="msapplication-navbutton-color" content="#2491dd">
     <!-- iOS Safari -->
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <!-- Яндекс.Браузер -->
-    <!-- Из-за этого тэга неправильно отображается в Chrome Mobile -->
-    <!-- <meta name="viewport" content="ya-title=#EF6C00,ya-dock=fade">       -->
 
-    <!-- <link rel="stylesheet" type="text/css" href="css/normalize.css"> -->
-    <!-- <link rel="stylesheet" type="text/css" href="css/mw_kit.css"> -->
     <link rel="stylesheet" type="text/css" href="css/style.css">
-
 
 </head>
 
@@ -64,7 +58,8 @@
 
                         <div class="mv_12 tb_6 header-bottom-center">
 
-                            <div class="menu-main-trigger js-mobile_menu__title js-trigger" data-target="menu-main" data-animation-effect="slide">
+                            <div class="menu-main-trigger js-mobile_menu__title js-trigger" data-target="menu-main"
+                                data-animation-effect="slide">
 
                             </div>
 
@@ -121,12 +116,7 @@
 
                     <div class="row">
 
-                        <settings 
-                            :fb="fb"
-                            :ratio="ratio" 
-                            :styles="styles" 
-                            @change-settings="updateSettings"
-                        >
+                        <settings :fb="fb" :ratio="ratio" :styles="styles" @change-settings="updateSettings">
 
                         </settings>
 
@@ -149,13 +139,7 @@
 
                         <div class="mv_12">
 
-                            <scale class="asd"
-                                :fb="fb"
-                                :ratio="ratio" 
-                                :styles="styles" 
-                                :font_size_names="font_names"                                  
-
-                            >
+                            <scale class="asd" :fb="fb" :ratio="ratio" :styles="styles" :font_size_names="font_names">
                             </scale>
 
 
@@ -173,7 +157,7 @@
 
 
 
-        
+
         <!-- development version, includes helpful console warnings -->
         <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
 

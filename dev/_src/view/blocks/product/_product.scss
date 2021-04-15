@@ -1,0 +1,225 @@
+
+.product {
+    padding-left: $columns_gap+px;
+    padding-right: $columns_gap+px;
+    &__image {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 220px; // border: 1px solid #ccc;
+        img {
+            width: auto;
+            max-width: 80%;
+            max-height: 80%;
+        }
+        &:hover {
+            opacity: 0.85;
+        }
+    }
+    &__content {
+
+    }
+
+    &__title-outer {
+        // display: flex; 
+        // display: inline-block;
+    }
+    &__title {
+        @include height_leveling('heading');
+        @include v_rhytm('text', $l_h);
+        font-size: $font_h4;
+        font-weight: 400;
+        color: $text;
+        display: block;
+        &:hover {
+            color: $accent_dark;
+        }
+    }
+    &__parameters {
+        &-list {
+            @include height_leveling('text');
+            @include v_rhytm('text', $l_h);
+            font-size: $fb;
+            li {
+                font-size: inherit;
+                color: $grey_dark;
+                &:before {
+                    content: "";
+                    margin: 0 0.5em;
+                    width: 2px;
+                    height: 2px;
+                    @extend %border_circle;
+                    background-color: $grey_light;
+                    display: inline-block;
+                    vertical-align: middle;
+                }
+            }
+        }
+    }
+    &__code {
+        @include height_leveling('text');
+        @include v_rhytm('text', $l_h);
+        font-size: $font_small;
+        font-size: $font_smaller;
+        font-weight: 400;
+        color: $text;
+        &-value {
+            font-weight: 300;
+        }
+    }
+    &__price {
+        @include height_leveling('text');
+        @include v_rhytm('text', $l_h);
+        font-size: $font_h4;
+        font-weight: bold;
+        color: $text;
+    }
+    &__price-label {
+        font-size: $font_small;
+        font-weight: 400;
+        color: $text;
+    }
+    &__price-label-summary {
+        @include typo_scheme('promocode');
+        padding-right: 1*$l_h;
+        font-size: $font_h4;        
+        color: $text;   
+    }
+    &__price--productfull {
+        font-size: $font_h3;
+    }
+    &__price--summary {
+        color: $accent_dark;
+    }
+    &__price-old {
+        @include height_leveling('text');
+        @include v_rhytm('text', $l_h);
+        font-size: $fb;
+        font-weight: 400;
+        color: $grey_dark;
+
+        &-value {
+            position: relative;
+
+            &:after {
+                @include pseudoelement_left_top(0, 50%);
+                width: 100%;
+                height: 1px;
+                background-color: $grey_dark;
+                transform: rotate(-12deg);  
+            }
+        }
+    } 
+    &__availability {
+        @include height_leveling('text');
+        @include v_rhytm('text', $l_h);
+        font-size: $font_small;
+        font-weight: 400;
+        color: $text;
+        &-value {
+            // font-weight: 500;
+            @include typo_scheme('promocode');
+            &--in-stock {
+                color: $accent_dark;
+            }
+            &--awaiting {
+                color: $warning_color;
+            }
+            &--none {
+                color: $error_color;
+            }
+        }
+    }
+    &__rating {
+        @include v_rhytm('text', $l_h);
+        font-size: $fb;
+        font-size: $font_small;
+    }
+
+    &__quantity {
+        $quantity_button_metric: 2*$fb;
+
+        &-inner {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+        }
+
+
+        &-field {
+            display: flex;
+            justify-content: center;
+            align-items: center; // align-items: stretch;            
+        }
+        &-button {
+            // @include height_leveling('forms_element');
+            // @include h_rhytm('forms_element', $font_forms_elements); 
+
+            width: $quantity_button_metric; 
+            height: $quantity_button_metric;
+
+            // font-size: $font_small;
+            font-size: $font_smaller;
+            // background-color: $grey_lighter;
+            // color: $grey_dark;
+            // cursor: pointer;
+            @include color_scheme('grey');
+            @extend %transition;
+            &:hover {
+                // color: $accent_dark;
+
+                // background-color: $accent;
+                // color: $white;
+                @include color_scheme('accent');
+            }
+            i {
+                font-size: $fb;
+            }
+        }
+        &-value {
+            width: 1.5*$quantity_button_metric; 
+            height: $quantity_button_metric;
+            padding-left: 0!important; padding-right: 0!important;
+            border: none!important;
+            text-align: center;
+        }        
+    }
+
+    // &__quantity {
+    //     // @include flex(flex-start, center);
+    //     &-field {
+    //         @include flex(flex-start, stretch);
+
+    //     }
+    //     &-button {
+    //         position: relative;
+    //         width: 2*$l_h_base;
+    //         // border: 1px solid $border_color;
+
+    //         border: 1px solid $grey_light;
+    //         color: $black_text;
+    //         i {
+    //             @include pseudoelement_left_top(50%, 50%);
+    //             transform: translate(-50%, -50%);
+    //             // font-size: 12px;
+    //             @include font_size('smaller');
+    //             color: inherit;
+    //         }
+
+    //         &:hover {
+    //             // border-color: $accent;
+    //             color: $accent;
+    //         }
+    //         &:active {
+    //             @include color_scheme('black-orange');
+    //         }            
+    //     }
+    //     &-value { // input
+    //         width: 2*$l_h_base;
+    //         padding: 0 !important;
+    //         border-width: 1px 0!important;
+    //         text-align: center;
+    //     }
+    // }
+
+}

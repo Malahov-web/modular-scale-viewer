@@ -61,7 +61,7 @@
             background-color: transparentize($accent, 1-0.25);
         }
         &-text-outer {
-            max-width: calc( 100% - (80px + 20px) - (40px + 40px) - (20px + 8px);
+            max-width: calc( 100% - (80px + 20px) - (40px + 40px) - (20px + 8px));
 
         }         
         &-text {

@@ -38,8 +38,8 @@ Vue.component( 'settings', {
                             <input type="text" class="field-text" 
                                 v-model.number="fb_local_settings" 
                                 v-on:keyup="changeFB">
-                            <p>Prop fb =  {{ fb }} </p>
-                            <p>Var fb_local_settings = {{ fb_local_settings }} </p>
+                                <!--p>Prop fb =  {{ fb }} </p-->
+                            <!--p>Var fb_local_settings = {{ fb_local_settings }} </p-->
                         </div>
                     </div>
 
@@ -165,7 +165,7 @@ Vue.component( 'scale', {
     },
 
     template: `
-        <div class="scale">
+        <div class="scale" __style="display:none;">
 
             <div class="scale__item" v-for=" font in fonts ">
                 <div class="scale__item-name-outer">
@@ -196,6 +196,29 @@ Vue.component( 'scale', {
                 </div>
 
             </div>
+
+
+            <div class="scale__item" _v-for=" font in fonts ">
+                <div class="scale__item-name-outer">
+                    <div class="scale__item-name">
+
+<div class="product__quantity-field">    
+    <!--button class="product__quantity-button product__quantity-button--minus"><i class="themify themify-minus"></i></button-->
+    <!--input type="number" class="field-text product__quantity-value" id="product__quantity" value="1"-->
+    <button class="product__quantity-button product__quantity-button--plus"
+        v-on:click="addScaleItem"
+    ><i class="themify themify-plus"></i></button>
+</div>
+
+                    </div>
+                </div>
+                <div class="scale__item-value-outer">
+                    <div class="scale__item-value">Add </div>
+                </div>
+
+
+            </div>   
+         
 
         </div>
     `,
@@ -238,6 +261,13 @@ Vue.component( 'scale', {
 
         
         
+    },
+
+    methods: {
+        addScaleItem() {
+            this.font_size_names.push( {} );
+
+        }
     }
 
 } )

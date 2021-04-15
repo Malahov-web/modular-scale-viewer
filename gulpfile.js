@@ -203,7 +203,7 @@ function jsDev (cb) {
 function jsBuild (argument) {
     // body... 
     return src(paths.dev.js + '/*.js')
-        .pipe(uglify())
+        // .pipe(uglify())
         .pipe(dest(paths.dist.js)) 
 }
 

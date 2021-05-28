@@ -1,82 +1,10 @@
 
-ср
-  deploy: Boilerplate-202-Gulp, add base and components from Skynet Computers (1)
-  Design - viewer (1) 
-  
-  Design - settings (1)
-  Верстка - scale, settings (1)
-  app.js (1)
-
-..далее:
-(!) ПЕРЕД Запуском Gulp - 
-Вынести app.js в :dev,
-Скопировать код и index.html:dev в index.html:src
-
-чт
-  refact file structure;  app.js - data:update,  (1)
-  app.js - computed, methods (1)
-
-.. попробовать сделать объект fonts в computed:
-
-
-пт 12.03
-  app.js -  computed  (1)
-  app.js - methods: setModualarScale(), setDefaultModualarScale() (1)
-  app.js - move to computed: setDefaultModualarScale(),  (1)
-
-
-ср 24.03
-..
-  app.js - Разработка П.п1-4 (1)
-  app.js - add components: scale (1)
-
-  app.js - components: settings (0.5)
-
-вт
-    skynet-computers-app  - app.js - components: settings  (1)
-  skynet-computers-app  - app.js - components: settings  (1)
-  skynet-computers-app  - app.js - components: settings  (0.5)
-
-..Куда-нибудь записать:
-Не изменяйте у компонента 'prop ' напрямую, 
-лучше дублировать в д-х!
-
-..далее:
-  посмотреть в уроке 9 что куда передается,
-  можно ли передать д-е из компонета экземпляру, 
-  или же нужно обязательно передавать через родительский компонент
 
 ср
-  lessons\vuemastery.com\1 intro-to-vue-js\9-communicating-events  - :video;  app.js - refact (1)
-  ../projects/sandbox - 
-    app.js - Архитектура приложения, (1)
-  app.js - Refact:  clean, add components: settings, scale. (0.5)
+  create: (0.5)
+  перенос: assets из старого проекта, scss, fonts, img (1)
 
-  app.js - update components: scale - add template, methods (1)
-
-
-
-
-далее:
-.. создать дир lessons - делать уроки из https://www..com/courses/intro-to-vue-js/vue-instance/
-
-
-
-1. Перенести base
-  1.1 Скопировать по частя (логическим блокам) код файла
-  1.2 Проверить соответствие переменных 
-  1.3 Перенести переменные vars вниз файла _vars
-
-
-Проектирование приложения:
-
-Модель д-ч
-
-ratio
-font_base
-font_size_names  []
-
-font_family
-color
-font_weight
-
+..компоненты 
+..settings
+..store
+..scale

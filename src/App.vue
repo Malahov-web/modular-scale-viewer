@@ -45,4 +45,18 @@ export default {
 //   color: #2c3e50;
 //   margin-top: 60px;
 // }
+
+div.field-text {
+  @extend input;
+  @extend input.field-text;
+
+  cursor: pointer;
+
+  &:hover {
+    border-color: $accent;
+  }
+  &.active {
+    border-color: $accent;
+  }
+}
 </style>

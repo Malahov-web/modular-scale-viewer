@@ -8,10 +8,12 @@
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
+    "axios": "^0.21.1",
     "bourbon": "^7.0.0",
     "core-js": "^3.6.5",
     "mw-grid": "^2.7.0",
     "vue": "^2.6.11",
+    "vue-color": "^2.8.1",
     "vuex": "^3.4.0"
   },
   "devDependencies": {

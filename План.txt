@@ -8,3 +8,26 @@
 ..settings
 ..store
 ..scale
+
+чт
+  Settings :update - add colorpicker (1)
+..
+  Settings :update (1)
+  services - services.js (0.5)
+
+..последнее:
+сделали запрос в googleFonts и получили шрифты,
+передали их в комп-т из store
+..далее:
+кажется не работает праметр запроса '?sort=popularity'
+
+--
+
+пн
+  services - services.js :fix; store :update; Settings :update (0.5)
+
+..последнее: пофиксили запрос в googleFonts
+передали в комп-т, вывели.
+..далее:
+комп-т scale
+добавить подключенные шрифты на страницу (еще какой-нибудь комп-т)

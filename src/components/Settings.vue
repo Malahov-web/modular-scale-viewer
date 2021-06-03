@@ -12,12 +12,6 @@
               v-model.number="fb"
               v-on:keyup="setSettings"
             />
-            <!-- <input
-              type="text"
-              class="field-text"
-              v-model.number="fb_local_settings"
-              v-on:keyup="changeFB"
-            /> -->
           </div>
         </div>
       </div>
@@ -32,6 +26,42 @@
               v-model.number="ratio"
               v-on:keyup="setSettings"
             />
+          </div>
+        </div>
+      </div>
+
+      <div class="settings__item-outer mv_12 ds_2">
+        <div class="settings__item">
+          <div class="settings__item-field settings__item-field--w--double">
+            <label class="settings__item-label">Color</label>
+            <!-- <input
+              type="text"
+              class="field-text"
+              __v-model="color"
+              v-bind="color"
+              __v-on:keyup="changeStyles"
+            /> -->
+
+            <div
+              class="field-text"
+              v-text="colorHex"
+              :class="{ active: isColorpickerVisible }"
+              v-on="{ click: toggleColorpicker, keyup: setSettings }"
+            ></div>
+
+            <!-- <input
+              type="text"
+              class="field-text"
+              __v-model="color"
+              v-bind="color"
+              __v-on:keyup="changeStyles"
+            /> -->
+
+            <colorpicker
+              class="as"
+              v-model="color"
+              v-show="isColorpickerVisible"
+            ></colorpicker>
           </div>
         </div>
       </div>
@@ -51,12 +81,13 @@
       </div> -->
     </form>
 
-    <!-- <div class="row">
-      <div class="settings__item-outer mv_12 ds_2">
+    <!-- Fonts static-->
+    <div class="row">
+      <!-- <div class="settings__item-outer mv_12 ds_2">
         <div class="settings__item">
           <div class="settings__item-field">
             <label class="settings__item-label">Font-family</label>
-            <select name="" class="select" v-model="styles.fontFamily">
+            <select name="" class="select" v-model="fontFamily">
               >
               <option value="Roboto" _disabled="">Roboto</option>
               <option value="Open Sans">Open Sans</option>
@@ -66,9 +97,27 @@
             </select>
           </div>
         </div>
+      </div> -->
+
+      <!-- Fonts from Store -->
+      <div class="settings__item-outer mv_12 ds_2">
+        <div class="settings__item">
+          <div class="settings__item-field">
+            <label class="settings__item-label">Font-family</label>
+            <select name="" class="select" v-model="fontFamily">
+              <option
+                v-for="item in fonts"
+                :value="item.family"
+                :key="item.family"
+              >
+                {{ item.family }}
+              </option>
+            </select>
+          </div>
+        </div>
       </div>
 
-      <div class="settings__item-outer mv_12 ds_2">
+      <!-- <div class="settings__item-outer mv_12 ds_2">
         <div class="settings__item">
           <div class="settings__item-field settings__item-field--w--double">
             <label class="settings__item-label">Color</label>
@@ -80,39 +129,80 @@
             />
           </div>
         </div>
-      </div>
+      </div> -->
 
       <div class="settings__item-outer mv_12 ds_2">
         <div class="settings__item-field">
           <label class="settings__item-label">Font-weight</label>
-          <select name="" class="select" v-model="styles.fontWeight">
-            <option value="400" _disabled="">400</option>
-            <option value="300">300</option>
-            <option value="500">500</option>
-            <option value="600">600</option>
-            <option value="700">700</option>
+          <select
+            name=""
+            class="select"
+            v-model="fontWeight"
+            v-on:change="setSettings"
+          >
+            <option
+              v-for="weight in fontWeightsArr"
+              :value="weight"
+              :key="weight"
+            >
+              {{ weight }}
+            </option>
           </select>
         </div>
       </div>
-    </div> -->
+    </div>
   </div>
 </template>
 
 <script>
+import { Photoshop } from "vue-color";
+
 export default {
   name: "Settings",
+
+  components: {
+    colorpicker: Photoshop,
+  },
 
   data() {
     return {
       fb: 16,
       ratio: 1.14,
+      //   var colors = '#194d33'
+      color: "#353437",
+      fontWeightsArr: ["400", "300", "500", "600", "700"],
+      fontWeight: "400",
+      fontFamily: "Roboto",
+
+      isColorpickerVisible: 0,
+
+      googleWebFontsDeveloperAPI: "AIzaSyCpLnb8YrKmUVA26D8VGCE0vNBwLb5UpmY",
     };
+  },
+
+  created() {
+    this.$store.dispatch("fetchFonts");
+    // this.$store.dispatch("fetchNews");
   },
 
   computed: {
     // fb_initial() {
     //   return this.$store.state.fb;
     // },
+
+    colorHex() {
+      if ("string" === typeof this.color) {
+        return this.color;
+      }
+      return this.color.hex;
+    },
+
+    fonts() {
+      // all fonts
+      //   return this.$store.state.fonts;
+      //   return this.$store.getters.getInitialFonts(); // - getter - Это НЕ метод, это св-во
+      return this.$store.getters.getInitialFonts;
+    },
   },
 
   methods: {
@@ -121,11 +211,21 @@ export default {
       this.$store.dispatch("setSettings", {
         fb: this.fb,
         ratio: this.ratio,
+        colorHex: this.colorHex,
+        fontWeight: this.fontWeight,
       });
       console.log("Settings - setSettings()");
+    },
+
+    toggleColorpicker() {
+      this.isColorpickerVisible = !this.isColorpickerVisible;
     },
   },
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.vc-photoshop {
+  position: absolute;
+}
+</style>

@@ -31,3 +31,25 @@
 ..далее:
 комп-т scale
 добавить подключенные шрифты на страницу (еще какой-нибудь комп-т)
+
+
+ср
+  BaseSelectWithSearch (1)
+
+..далее:
+..onInput() - 
+при поиске через интервал обращаться к store,
+получать (находить) варианты похожие на искомый (совпадения),
+получать их в комп-те
+выводить в template'е
+
+чт
+  BaseSelectWithSearch :update - onInput(), store - getSearchResults(1)
+  BaseSelectWithSearch :update - template , resetSearchResults(), resetSearchField() (0.5)
+
+..далее:
++ поставить активный пункт при выборе из searchResults,
+? добавить выбранный из найденных в общий массив
+
+пт
+  BaseSelectWithSearch :update - setSearchedActiveOption(), setPreviousSearchedActiveOption(), template (1)

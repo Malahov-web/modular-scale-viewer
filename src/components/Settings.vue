@@ -150,18 +150,24 @@
           </select>
         </div>
       </div>
+
+      <div class="settings__item-outer mv_12 ds_2">
+        <BaseSelectWithSearch class="asd" :items="fonts"></BaseSelectWithSearch>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
 import { Photoshop } from "vue-color";
+import BaseSelectWithSearch from "@/components/BaseSelectWithSearch.vue";
 
 export default {
   name: "Settings",
 
   components: {
     colorpicker: Photoshop,
+    BaseSelectWithSearch,
   },
 
   data() {

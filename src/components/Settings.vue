@@ -61,6 +61,7 @@
               class="as"
               v-model="color"
               v-show="isColorpickerVisible"
+              @input="changeColor"
             ></colorpicker>
           </div>
         </div>
@@ -100,7 +101,7 @@
       </div> -->
 
       <!-- Fonts from Store -->
-      <div class="settings__item-outer mv_12 ds_2">
+      <div class="settings__item-outer mv_12 ds_2" style="display: none">
         <div class="settings__item">
           <div class="settings__item-field">
             <label class="settings__item-label">Font-family</label>
@@ -152,7 +153,13 @@
       </div>
 
       <div class="settings__item-outer mv_12 ds_2">
-        <BaseSelectWithSearch class="asd" :items="fonts"></BaseSelectWithSearch>
+        <BaseSelectWithSearch
+          class="asd"
+          :items="fonts"
+          __change-family="[changeFamily, setSettings]"
+          @change-family="changeFamily"
+        >
+        </BaseSelectWithSearch>
       </div>
     </div>
   </div>
@@ -219,12 +226,23 @@ export default {
         ratio: this.ratio,
         colorHex: this.colorHex,
         fontWeight: this.fontWeight,
+        fontFamily: this.fontFamily,
       });
       console.log("Settings - setSettings()");
     },
 
     toggleColorpicker() {
       this.isColorpickerVisible = !this.isColorpickerVisible;
+    },
+
+    changeFamily(fontFamily) {
+      this.fontFamily = fontFamily;
+
+      this.setSettings();
+    },
+
+    changeColor() {
+      this.setSettings();
     },
   },
 };

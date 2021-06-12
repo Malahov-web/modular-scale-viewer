@@ -9,10 +9,20 @@ export default new Vuex.Store({
     fb: 16,
     ratio: 1.14,      
     color: '#000000',
-    fontWeight: '',
-    fontFamily: '',
+    fontWeight: '400',
+    fontFamily: 'Roboto',
 
-    fonts: {}
+    fonts: {},
+
+    fontSizeNames: [
+        'base',
+        'h6',
+        'h5',
+        'h4',
+        'h3',
+        'h2',
+        'h1',
+    ],    
   },
 
   modules: {},
@@ -25,8 +35,8 @@ export default new Vuex.Store({
           state.fb = fb
           state.ratio = ratio
           state.color = colorHex,
-          state.fontWeight = fontFamily,
-          state.fontFamily = fontWeight
+          state.fontWeight = fontWeight,
+          state.fontFamily = fontFamily
 
       },
 
@@ -36,12 +46,6 @@ export default new Vuex.Store({
   },
 
   actions: {
-
-    // fetchSchedule({ commit }) {
-    //     ScheduleServices.getSchedule().then((response) => {
-    //       commit("SET_SCHEDULE", response.data);
-    //       console.log("Schedule has been fetched:", response); // <--- here
-    //     });
 
     setSettings( {commit}, { fb, ratio, colorHex, fontWeight, fontFamily } ) {
         commit("SET_SETTINGS", { fb, ratio, colorHex, fontWeight, fontFamily });
@@ -132,6 +136,20 @@ export default new Vuex.Store({
         // return 'Результат: ' + result;
         // return  result;
         return  resultFixed;
+      },
+
+      getSettings: state => {
+          return {
+            fb: state.fb,
+            ratio: state.ratio,      
+            color: state.color,
+            fontWeight: state.fontWeight,
+            fontFamily: state.fontFamily, 
+          }
+      },
+
+      getFontSizeNames: state => {
+          return state.fontSizeNames
       }
   }
 });

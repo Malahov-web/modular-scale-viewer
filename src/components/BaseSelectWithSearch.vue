@@ -12,59 +12,61 @@
         </span>
       </div>
 
-      <ul
-        class="select__list select__list--search--results"
-        v-show="searchResult.length"
-      >
-        <li class="select__list-item select__list-item--title">
-          <em>Search results:</em>
-        </li>
-        <li
-          class="select__list-item"
-          v-for="(item, index) in searchResult"
-          :key="item.family"
-          @click="setSearchedActiveOption(item, index)"
+      <div class="select__lists-container">
+        <ul
+          class="select__list select__list--search--results"
+          v-show="searchResult.length"
         >
-          {{ item.family }}
-        </li>
+          <li class="select__list-item select__list-item--title">
+            <em>Search results:</em>
+          </li>
+          <li
+            class="select__list-item"
+            v-for="(item, index) in searchResult"
+            :key="item.family"
+            @click="setSearchedActiveOption(item, index)"
+          >
+            {{ item.family }}
+          </li>
 
-        <!-- <hr /> -->
-      </ul>
+          <!-- <hr /> -->
+        </ul>
 
-      <!-- Last Searched Options-->
-      <ul
-        class="select__list select__list--search--results"
-        v-if="previousSearchResult.length && isListOpen"
-      >
-        <li class="select__list-item select__list-item--title">
-          <em>Yout Last Searched:</em>
-        </li>
-        <li
-          class="select__list-item"
-          v-for="(item, index) in previousSearchResult"
-          :key="item.family"
-          @click="setPreviousSearchedActiveOption(item, index)"
+        <!-- Last Searched Options-->
+        <ul
+          class="select__list select__list--search--results"
+          v-if="previousSearchResult.length && isListOpen"
         >
-          {{ item.family }}
-        </li>
+          <li class="select__list-item select__list-item--title">
+            <em>Yout Last Searched:</em>
+          </li>
+          <li
+            class="select__list-item"
+            v-for="(item, index) in previousSearchResult"
+            :key="item.family"
+            @click="setPreviousSearchedActiveOption(item, index)"
+          >
+            {{ item.family }}
+          </li>
 
-        <!-- <hr /> -->
-      </ul>
+          <!-- <hr /> -->
+        </ul>
 
-      <!-- Default potions-->
-      <ul class="select__list" v-show="true == isListOpen">
-        <li class="select__list-item select__list-item--title">
-          <em>Most popular:</em>
-        </li>
-        <li
-          class="select__list-item"
-          v-for="(item, index) in selectOptions"
-          :key="item.family"
-          @click="setSelectActiveOption(item, index)"
-        >
-          {{ item.family }}
-        </li>
-      </ul>
+        <!-- Default potions-->
+        <ul class="select__list" v-show="true == isListOpen">
+          <li class="select__list-item select__list-item--title">
+            <em>Most popular:</em>
+          </li>
+          <li
+            class="select__list-item"
+            v-for="(item, index) in selectOptions"
+            :key="item.family"
+            @click="setSelectActiveOption(item, index)"
+          >
+            {{ item.family }}
+          </li>
+        </ul>
+      </div>
     </div>
   </div>
 </template>
@@ -152,6 +154,7 @@ export default {
       // 3. Transferred data up
       //   this.$emit("change-sort", this.activeOption);
       //   this.$emit("change-sort", index);
+      this.giveValue();
 
       // 4. Reset search results
       this.resetSearchResults();
@@ -172,6 +175,7 @@ export default {
       // 3. Transferred data up
       //   this.$emit("change-sort", this.activeOption);
       //   this.$emit("change-sort", index);
+      this.giveValue();
 
       // 4. Reset search results
       this.resetSearchResults();
@@ -200,6 +204,7 @@ export default {
       // 3. Transferred data up
       //   this.$emit("change-sort", this.activeOption);
       //   this.$emit("change-sort", index);
+      this.giveValue();
 
       // 4. Reset search results
       this.resetSearchResults();
@@ -237,13 +242,36 @@ export default {
     resetSearchField() {
       this.inputText = "";
     },
+
+    giveValue() {
+      this.$emit("change-family", this.activeValue);
+    },
   },
 };
 </script>
 
 <style lang="scss" scoped>
+.select {
+  position: relative;
+}
+.select__lists-container {
+  position: absolute;
+  margin-left: -1px;
+  margin-right: -1px;
+  background-color: #fff;
+  width: calc(100% + 1px + 1px);
+  z-index: 100;
+  border-left: 1px solid #2491dd;
+  border-right: 1px solid #2491dd;
+}
+
 .select__list {
   border-bottom: 1px solid #d6d5d7;
+
+  &:last-child {
+    border-bottom: 1px solid #2491dd;
+  }
+
   &--search--results &-item--title {
     font-style: italic;
     color: #9b999e;

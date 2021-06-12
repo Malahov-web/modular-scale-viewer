@@ -53,3 +53,21 @@
 
 пт
   BaseSelectWithSearch :update - setSearchedActiveOption(), setPreviousSearchedActiveOption(), template (1)
+
+--
+
+вт
+  update: Settings, BaseSelectWithSearch (1)
+  Scale (0.5)
+
+чт
+..
+
++- scale ?
++-собрать как-то шкалу
+..вывести
+  разделить на комп-ты ( ScaleItem )
+..обработать инпуты с именами размеров
+..сгенерировать стили из settings и вставить в док-т
+
++ поправить стили

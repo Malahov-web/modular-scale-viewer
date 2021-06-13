@@ -183,7 +183,7 @@ export default {
       ratio: 1.14,
       //   var colors = '#194d33'
       color: "#353437",
-      fontWeightsArr: ["400", "300", "500", "600", "700"],
+      //   fontWeightsArr: ["400", "300", "500", "600", "700"],
       fontWeight: "400",
       fontFamily: "Roboto",
 
@@ -196,6 +196,7 @@ export default {
   created() {
     this.$store.dispatch("fetchFonts");
     // this.$store.dispatch("fetchNews");
+    // this.setSettings();
   },
 
   computed: {
@@ -215,6 +216,10 @@ export default {
       //   return this.$store.state.fonts;
       //   return this.$store.getters.getInitialFonts(); // - getter - Это НЕ метод, это св-во
       return this.$store.getters.getInitialFonts;
+    },
+
+    fontWeightsArr() {
+      return this.$store.getters.getFontWeightsArr;
     },
   },
 
@@ -251,5 +256,6 @@ export default {
 <style lang="scss" scoped>
 .vc-photoshop {
   position: absolute;
+  z-index: 300;
 }
 </style>

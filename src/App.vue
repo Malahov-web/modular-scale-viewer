@@ -36,6 +36,8 @@
         </div>
       </div>
     </section>
+
+    <DocumentStyles class="asd"></DocumentStyles>
   </div>
 </template>
 
@@ -43,6 +45,7 @@
 // import HelloWorld from "./components/HelloWorld.vue";
 import Settings from "./components/Settings.vue";
 import Scale from "./components/Scale.vue";
+import DocumentStyles from "./components/DocumentStyles.vue";
 
 export default {
   name: "App",
@@ -50,6 +53,7 @@ export default {
     // HelloWorld,
     Settings,
     Scale,
+    DocumentStyles,
   },
 };
 </script>

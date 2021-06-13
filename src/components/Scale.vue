@@ -1,29 +1,24 @@
 <template>
   <div class="scale" __style="display:none;">
-    <!-- <div class="scale__item">
-      <div class="scale__item-name-outer">
-        <div class="scale__item-name">
-          <input type="text" class="field-text" />
-        </div>
-      </div>
-      <div class="scale__item-value-outer">
-        <div class="scale__item-value">16</div>
-      </div>
-      <div class="scale__item-line-height-outer">
-        <div class="scale__item-line-height" style="font-size: 16px"></div>
-      </div>
-      <div class="scale__item-text-outer" style="font-size: 16px">
-        <div
-          class="text"
-          style="color: rgb(53, 52, 55); font-weight: 400; font-family: Roboto"
-        >
-          Lorem Ipsum - это текст-"рыба", часто используемый в печати и
-          вэб-дизайне. Lorem Ipsum является стандартной ...
-        </div>
-      </div>
-    </div> -->
+    <!-- -->
 
-    <div class="scale__item" v-for="(font, index) in fonts" :key="font[id]">
+    <ScaleItem
+      class="asd"
+      v-for="(item, index) in fonts"
+      :key="item[id]"
+      :item="item"
+      :item_index="index"
+      __name="font_size_names[index]"
+      :styles="styles"
+      @change-name="updateFontNames"
+    ></ScaleItem>
+
+    <div
+      style="display: none"
+      class="scale__item"
+      v-for="(font, index) in fonts"
+      :key="font[id]"
+    >
       <div class="scale__item-name-outer">
         <div class="scale__item-name">
           <input
@@ -50,7 +45,7 @@
         <div
           class="text"
           _v-bind:style="{ fontSize: font['font_size'] }"
-          v-bind:style="styles"
+          v-bind:styles="styles"
         >
           Lorem Ipsum - это текст-"рыба", часто используемый в печати и
           вэб-дизайне. Lorem Ipsum является стандартной ...
@@ -61,13 +56,12 @@
 </template>
 
 <script>
+import ScaleItem from "@/components/ScaleItem.vue";
+
 export default {
   name: "Scale",
-
-  data() {
-    return {
-      //   key: value,
-    };
+  components: {
+    ScaleItem,
   },
 
   computed: {
@@ -117,6 +111,20 @@ export default {
       }
 
       return fontsArr;
+    },
+  },
+
+  methods: {
+    updateFontNames(item_index, nameUI) {
+      console.log("item_index");
+      console.log(item_index);
+      console.log("nameUI");
+      console.log(nameUI);
+
+      this.$store.dispatch("updateFontNames", {
+        item_index,
+        nameUI,
+      });
     },
   },
 };

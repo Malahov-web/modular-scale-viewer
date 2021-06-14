@@ -1,11 +1,11 @@
 <template>
   <div class="mv_12 settings">
-    <!-- <form class="row" v-on:change="setSettings"> -->
     <form class="row">
+      <!-- Font base -->
       <div class="settings__item-outer mv_12 ds_2">
         <div class="settings__item">
           <div class="settings__item-field">
-            <label class="settings__item-label">Input normal Label</label>
+            <label class="settings__item-label">Font base</label>
             <input
               type="text"
               class="field-text"
@@ -16,6 +16,7 @@
         </div>
       </div>
 
+      <!-- Ratio -->
       <div class="settings__item-outer mv_12 ds_2">
         <div class="settings__item">
           <div class="settings__item-field">
@@ -30,17 +31,11 @@
         </div>
       </div>
 
+      <!-- Color -->
       <div class="settings__item-outer mv_12 ds_2">
         <div class="settings__item">
           <div class="settings__item-field settings__item-field--w--double">
             <label class="settings__item-label">Color</label>
-            <!-- <input
-              type="text"
-              class="field-text"
-              __v-model="color"
-              v-bind="color"
-              __v-on:keyup="changeStyles"
-            /> -->
 
             <div
               class="field-text"
@@ -48,14 +43,6 @@
               :class="{ active: isColorpickerVisible }"
               v-on="{ click: toggleColorpicker, keyup: setSettings }"
             ></div>
-
-            <!-- <input
-              type="text"
-              class="field-text"
-              __v-model="color"
-              v-bind="color"
-              __v-on:keyup="changeStyles"
-            /> -->
 
             <colorpicker
               class="as"
@@ -66,41 +53,10 @@
           </div>
         </div>
       </div>
-
-      <!-- <div class="settings__item-outer mv_12 ds_2">
-        <div class="settings__item">
-          <div class="settings__item-field">
-            <label class="settings__item-label">Ratio</label>
-            <input
-              type="text"
-              class="field-text"
-              v-model.number="ratio_local_settings"
-              v-on:keyup="changeRatio"
-            />
-          </div>
-        </div>
-      </div> -->
     </form>
 
-    <!-- Fonts static-->
     <div class="row">
-      <!-- <div class="settings__item-outer mv_12 ds_2">
-        <div class="settings__item">
-          <div class="settings__item-field">
-            <label class="settings__item-label">Font-family</label>
-            <select name="" class="select" v-model="fontFamily">
-              >
-              <option value="Roboto" _disabled="">Roboto</option>
-              <option value="Open Sans">Open Sans</option>
-              <option value="Noto Sans JP">Noto Sans JP</option>
-              <option value="Lato">Lato</option>
-              <option value="Montserrat">Montserrat</option>
-            </select>
-          </div>
-        </div>
-      </div> -->
-
-      <!-- Fonts from Store -->
+      <!-- TODO: fix error - if remove this, BaseSelectWithSearch dont' render) Fonts from Store -->
       <div class="settings__item-outer mv_12 ds_2" style="display: none">
         <div class="settings__item">
           <div class="settings__item-field">
@@ -118,20 +74,7 @@
         </div>
       </div>
 
-      <!-- <div class="settings__item-outer mv_12 ds_2">
-        <div class="settings__item">
-          <div class="settings__item-field settings__item-field--w--double">
-            <label class="settings__item-label">Color</label>
-            <input
-              type="text"
-              class="field-text"
-              v-model="styles.color"
-              v-on:keyup="changeStyles"
-            />
-          </div>
-        </div>
-      </div> -->
-
+      <!-- Font weight -->
       <div class="settings__item-outer mv_12 ds_2">
         <div class="settings__item-field">
           <label class="settings__item-label">Font-weight</label>
@@ -152,10 +95,11 @@
         </div>
       </div>
 
+      <!-- Font family from API -->
       <div class="settings__item-outer mv_12 ds_2">
         <BaseSelectWithSearch
-          class="asd"
           :items="fonts"
+          :initial_item_active="fontFamily"
           __change-family="[changeFamily, setSettings]"
           @change-family="changeFamily"
         >
@@ -181,9 +125,7 @@ export default {
     return {
       fb: 16,
       ratio: 1.14,
-      //   var colors = '#194d33'
       color: "#353437",
-      //   fontWeightsArr: ["400", "300", "500", "600", "700"],
       fontWeight: "400",
       fontFamily: "Roboto",
 
@@ -195,15 +137,10 @@ export default {
 
   created() {
     this.$store.dispatch("fetchFonts");
-    // this.$store.dispatch("fetchNews");
-    // this.setSettings();
+    // this.setSettings(); // TEST DEV
   },
 
   computed: {
-    // fb_initial() {
-    //   return this.$store.state.fb;
-    // },
-
     colorHex() {
       if ("string" === typeof this.color) {
         return this.color;
@@ -212,9 +149,6 @@ export default {
     },
 
     fonts() {
-      // all fonts
-      //   return this.$store.state.fonts;
-      //   return this.$store.getters.getInitialFonts(); // - getter - Это НЕ метод, это св-во
       return this.$store.getters.getInitialFonts;
     },
 
@@ -225,7 +159,6 @@ export default {
 
   methods: {
     setSettings() {
-      //   this.$store.dispatch("addNewsItem", this.item)
       this.$store.dispatch("setSettings", {
         fb: this.fb,
         ratio: this.ratio,
@@ -249,6 +182,12 @@ export default {
     changeColor() {
       this.setSettings();
     },
+
+    // TODO: bind hotkey to close select
+    // onHotKey(event) {
+    //   console.log("Событие keyup");
+    //   console.log(event);
+    // },
   },
 };
 </script>

@@ -9,13 +9,6 @@
         </div>
 
         <div class="row">
-          <!-- <settings
-          :fb="fb"
-          :ratio="ratio"
-          :styles="styles"
-          @change-settings="updateSettings"
-        >
-        </settings> -->
           <Settings class="asd"> </Settings>
         </div>
       </div>
@@ -42,7 +35,6 @@
 </template>
 
 <script>
-// import HelloWorld from "./components/HelloWorld.vue";
 import Settings from "./components/Settings.vue";
 import Scale from "./components/Scale.vue";
 import DocumentStyles from "./components/DocumentStyles.vue";
@@ -50,7 +42,6 @@ import DocumentStyles from "./components/DocumentStyles.vue";
 export default {
   name: "App",
   components: {
-    // HelloWorld,
     Settings,
     Scale,
     DocumentStyles,
@@ -59,17 +50,10 @@ export default {
 </script>
 
 <style lang="scss">
+// Import styles from base (old) project assets
 @import "assets/src/scss/style";
 
-// #app {
-//   font-family: Avenir, Helvetica, Arial, sans-serif;
-//   -webkit-font-smoothing: antialiased;
-//   -moz-osx-font-smoothing: grayscale;
-//   text-align: center;
-//   color: #2c3e50;
-//   margin-top: 60px;
-// }
-
+// Mmm.. div looks like input
 div.field-text {
   @extend input;
   @extend input.field-text;

@@ -8,50 +8,9 @@
       :key="item[id]"
       :item="item"
       :item_index="index"
-      __name="font_size_names[index]"
       :styles="styles"
       @change-name="updateFontNames"
     ></ScaleItem>
-
-    <div
-      style="display: none"
-      class="scale__item"
-      v-for="(font, index) in fonts"
-      :key="font[id]"
-    >
-      <div class="scale__item-name-outer">
-        <div class="scale__item-name">
-          <input
-            class="field-text"
-            type="text"
-            __v-model="font_size_names_local_settings[index]"
-            v-model="font_size_names[index]"
-          />
-        </div>
-      </div>
-      <div class="scale__item-value-outer">
-        <div class="scale__item-value">{{ font["font_size"] }}</div>
-      </div>
-      <div class="scale__item-line-height-outer">
-        <div
-          class="scale__item-line-height"
-          v-bind:style="{ fontSize: font['font_size'] + 'px' }"
-        ></div>
-      </div>
-      <div
-        class="scale__item-text-outer"
-        v-bind:style="{ fontSize: font['font_size'] + 'px' }"
-      >
-        <div
-          class="text"
-          _v-bind:style="{ fontSize: font['font_size'] }"
-          v-bind:styles="styles"
-        >
-          Lorem Ipsum - это текст-"рыба", часто используемый в печати и
-          вэб-дизайне. Lorem Ipsum является стандартной ...
-        </div>
-      </div>
-    </div>
   </div>
 </template>
 
@@ -116,11 +75,6 @@ export default {
 
   methods: {
     updateFontNames(item_index, nameUI) {
-      console.log("item_index");
-      console.log(item_index);
-      console.log("nameUI");
-      console.log(nameUI);
-
       this.$store.dispatch("updateFontNames", {
         item_index,
         nameUI,

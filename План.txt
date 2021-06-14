@@ -68,10 +68,28 @@
 + вывести
   + разделить на комп-ты ( ScaleItem )
 + обработать инпуты с именами размеров
-..сгенерировать стили из settings и вставить в док-т
++ сгенерировать стили из settings и вставить в док-т
 ?..сгенерировать код SCSS ?
 
 + поправить стили
 
 пт
   DocumentStyles (1)
+
+сб
+..стилизовать до конца BaseSelectWithSearch
+..commit,
+..clean code, update README, commit
+..git merge, push
+
+  ; BaseSelectWithSearch :styles, (1)
+  code :clean, store - :fix (1)
+
+  code :clean 
+
+..далее:
+слить ветки и залить?
+залить ветки сначала на хосте ?
+см. репозиторий
+обновить README
+залить на gh-pages

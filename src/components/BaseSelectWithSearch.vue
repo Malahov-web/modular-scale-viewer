@@ -3,12 +3,17 @@
     <label class="settings__item-label">Font-family</label>
 
     <div class="select">
-      <!-- <div class="select__title">Начните печатать..</div> -->
-
       <div class="select__title" @click="toggleList">
         <span v-if="!isListOpen"> {{ activeValue }} </span>
         <span v-show="isListOpen">
-          <input type="text" id="too" v-model="inputText" @input="onInput" />
+          <input
+            type="text"
+            class="field-text"
+            id="too"
+            v-model="inputText"
+            @input="onInput"
+            placeholder="search font.."
+          />
         </span>
       </div>
 
@@ -82,44 +87,30 @@ export default {
         return [];
       },
     },
+
+    initial_item_active: {
+      type: String,
+      default: "Roboto",
+    },
   },
 
   data() {
     return {
       selectOptions: this.items,
       //   activeValue: "Начальное значение",
+      // activeValue: "Выберите из списка",
+      activeValue: this.initial_item_active,
       activeOption: 0,
-      //   state: 0,
       isListOpen: false,
 
       inputText: "",
 
       searchResult: [],
       previousSearchResult: [],
-
-      // v.2
-      activeValue: "Выберите из списка",
     };
   },
 
-  computed: {
-    // activeValue() {
-    //   // v.2
-    //   //   o.hasOwnProperty('prop');
-    //   if (this.searchResult[this.activeOption].hasOwnProperty("family")) {
-    //     return this.searchResult[this.activeOption].family;
-    //   }
-    //   if (this.selectOptions[this.activeOption].hasOwnProperty("family")) {
-    //     return this.selectOptions[this.activeOption].family;
-    //   } else {
-    //     return "Выберите из списка";
-    //   }
-    //   // v.1 with static options only
-    //   //   return (
-    //   //     this.selectOptions[this.activeOption].family || "Выберите из списка"
-    //   //   );
-    // },
-  },
+  computed: {},
 
   methods: {
     toggleList(event) {
@@ -135,10 +126,12 @@ export default {
       console.log(inputEl);
     },
 
+    // TODO:
     // changeSelectState() {
     //   this.state = !this.state;
     // },
 
+    // TODO: refact 3 set***ActiveOption methods
     setSelectActiveOption(option, index) {
       // 1. Set active state
       //   this.activeOption = option.value;
@@ -152,8 +145,6 @@ export default {
       this.isListOpen = false;
 
       // 3. Transferred data up
-      //   this.$emit("change-sort", this.activeOption);
-      //   this.$emit("change-sort", index);
       this.giveValue();
 
       // 4. Reset search results
@@ -173,8 +164,6 @@ export default {
       this.isListOpen = false;
 
       // 3. Transferred data up
-      //   this.$emit("change-sort", this.activeOption);
-      //   this.$emit("change-sort", index);
       this.giveValue();
 
       // 4. Reset search results
@@ -182,7 +171,6 @@ export default {
       this.resetSearchField();
 
       // 5. Add to previous Search Result
-      //   this.previousSearchResult.push(option);
       this.previousSearchResult.unshift(option);
       if (this.previousSearchResult.length > 10) {
         this.previousSearchResult.pop();
@@ -202,8 +190,6 @@ export default {
       this.isListOpen = false;
 
       // 3. Transferred data up
-      //   this.$emit("change-sort", this.activeOption);
-      //   this.$emit("change-sort", index);
       this.giveValue();
 
       // 4. Reset search results
@@ -215,18 +201,11 @@ export default {
       console.log("inputText:");
       console.log(this.inputText);
       let inputText = this.inputText;
-
-      //   function sayHi() {
-      //     alert("Привет");
-      //   }
-      //   setTimeout(sayHi, 1000);
-
-      //   let searchResult = this.getSearchResults(inputText);
-      //   let searchResult = setTimeout(this.getSearchResults(inputText), 2000); // -
       let searchResult = this.searchResult;
+
       setTimeout(
         () => (this.searchResult = this.getSearchResults(inputText)),
-        1000
+        500
       );
       this.searchResult = searchResult;
     },
@@ -276,9 +255,19 @@ export default {
     font-style: italic;
     color: #9b999e;
   }
+
+  // Elements
+  &-item:not(&-item--title) {
+    cursor: pointer;
+  }
 }
 .select__list-item--title {
   font-style: italic;
-  color: #9b999e;
+  color: #9b999e !important;
+  background: none !important;
+}
+
+.field-text {
+  border-width: 0 0 1px 0;
 }
 </style>

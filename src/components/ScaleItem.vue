@@ -45,9 +45,6 @@ export default {
     styles: {
       type: Object,
     },
-    // name: {
-    //   type: String,
-    // },
     item_index: {
       type: Number,
     },
@@ -61,10 +58,8 @@ export default {
 
   methods: {
     changeName() {
-      //   this.$emit("change-family", this.activeValue);
       this.$emit("change-name", this.item_index, this.nameUI);
-      //   console.log(this.$attrs);
-      console.log("changeName");
+      console.log("event - changeName");
     },
   },
 };

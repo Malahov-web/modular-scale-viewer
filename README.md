@@ -18,18 +18,20 @@ Modular Scale Viewer is simple app to customize modular font scale for your desi
 3.  Build prod files 
  `npm run build`
 
-## Usage
-1. Open 'dist/index.html'
-2. Poke settings buttons and see result in viewer
+
+## Demo
+https://malahov-web.github.io/modular-scale-viewer/
 
 
 ## More
 
 ### Creator
 **Kirill Malahov**
-https://github.com/Malahov-web/
-http://malahov-web.com/
+* https://github.com/Malahov-web/
+* http://malahov-web.com/
 
 ### Vue.js doc
-See [Vue.js docs](https://vuejs.org/).
-See [Vue CLI docs](https://cli.vuejs.org/).
+* See [Vue.js docs](https://vuejs.org/).
+* See [Vue CLI docs](https://cli.vuejs.org/).
+
+

@@ -85,7 +85,7 @@
   ; BaseSelectWithSearch :styles, (1)
   code :clean, store - :fix (1)
 
-  code :clean 
+  code :clean, README :update, :build (1)
 
 ..далее:
 слить ветки и залить?

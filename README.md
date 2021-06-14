@@ -1,24 +1,35 @@
-# modular-scale-viewer-app
+# Modular Scale Viewer
+Simple Demo app on Vue.js
 
-## Project setup
-```
-npm install
-```
+Modular Scale Viewer is simple app to customize modular font scale for your design 
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
 
-### Compiles and minifies for production
-```
-npm run build
-```
+## Download
+1. Download repo
+ `git clone git@github.com:Malahov-web/modular-scale-viewer.git`
 
-### Lints and fixes files
-```
-npm run lint
-```
+## Development
+1. Install project
+`npm i`
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+2.  Run live dev
+`npm run serve`   
+
+3.  Build prod files 
+ `npm run build`
+
+## Usage
+1. Open 'dist/index.html'
+2. Poke settings buttons and see result in viewer
+
+
+## More
+
+### Creator
+**Kirill Malahov**
+https://github.com/Malahov-web/
+http://malahov-web.com/
+
+### Vue.js doc
+See [Vue.js docs](https://vuejs.org/).
+See [Vue CLI docs](https://cli.vuejs.org/).
